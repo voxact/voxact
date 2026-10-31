@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>译声 | 配音知识与剧目化训练</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkCarbon: '#121212',
+                        neutralGray: '#777777',
+                        lightGray: '#E5E5E5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        'xl-card': '16px',
+                        'hero-round': '24px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .clip-slant {
+                clip-path: polygon(0 0, 100% 0, 100% 88%, 94% 100%, 0 100%);
+            }
+            .clip-slant-white {
+                clip-path: polygon(6% 0, 100% 0, 100% 100%, 0 100%, 0 12%);
+            }
+            .text-shadow {
+                text-shadow: 0 2px 12px rgba(0,0,0,0.45);
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white font-sans text-darkCarbon overflow-x-hidden">
+
+<!-- ===== 顶部导航栏（嵌入式毛玻璃版） ===== -->
+<header class="fixed top-0 left-0 w-full z-50 pointer-events-none">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between gap-4">
+        
+        <div class="pointer-events-auto bg-darkCarbon/50 backdrop-blur-2xl backdrop-saturate-150 rounded-full px-6 py-3 shadow-2xl border border-white/20 transition-all duration-300 flex items-center">
+            <a href="index.html" class="hover:opacity-80 transition flex items-center">
+    <img src="assets/images/logo/logo_yisheng.png" alt="译声" class="h-7 w-auto object-contain">
+</a>
+        </div>
+
+           <nav class="pointer-events-auto hidden md:flex items-center gap-x-4 bg-darkCarbon/50 backdrop-blur-2xl backdrop-saturate-150 rounded-full px-4 py-2 shadow-2xl border border-white/20 transition-all duration-300">
+            <!-- 首页：现在是高亮状态，链接指向 #hero -->
+            <a href="#hero" class="px-5 py-2 rounded-full bg-white/30 text-white font-medium text-sm">首页</a>
+            
+            <!-- 资料库：现在取消高亮，改为普通悬浮效果 -->
+            <a href="#knowledge" class="px-5 py-2 rounded-full text-white/70 hover:bg-white/20 hover:text-white transition text-sm">译声资料库</a>
+            
+            <!-- 剧目化训练：链接直接用 #drama -->
+            <a href="#drama" class="px-5 py-2 rounded-full text-white/70 hover:bg-white/20 hover:text-white transition text-sm">剧目化训练</a>
+            
+            <!-- 作品与访谈：链接指向目前的流程区块 #process -->
+            <a href="#process" class="px-5 py-2 rounded-full text-white/70 hover:bg-white/20 hover:text-white transition text-sm">作品与访谈</a>
+        </nav>
+
+        <div class="pointer-events-auto bg-darkCarbon/50 backdrop-blur-2xl backdrop-saturate-150 rounded-full shadow-2xl border border-white/20 transition-all duration-300">
+           <a href="#footer" class="block px-6 py-3 text-white text-sm font-medium flex items-center gap-2">
+    参与项目 <i class="fa fa-arrow-right"></i>
+</a>
+        </div>
+
+    </div>
+</header>
+
+<!-- ===== Hero首屏区块 ===== -->
+<section id="hero" class="relative min-h-screen w-full flex items-center pt-24">
+    <<div class="absolute inset-0 bg-[url('assets/images/hero/hero_bg_main.webp')] bg-cover bg-center">
+        <div class="absolute inset-0 bg-black/40"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-8 items-center">
+            <div class="text-white">
+                <div class="text-sm mb-3 opacity-80">探索爱好配音的另一种可能</div>
+                <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight text-shadow mb-6">
+                    积光年之力 译万象为声
+                </h1>
+                <p class="text-base opacity-90 max-w-lg mb-8">
+                    以爱好为羽翼，以表演为核心，以声音为载体，深耕剧目化共同创作，拥抱同好之间的协作表达。
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#knowledge" class="bg-white text-darkCarbon rounded-full px-6 py-3 font-medium flex items-center gap-2">
+                        配音知识体系 <i class="fa fa-arrow-right"></i>
+                    </a>
+                    <a href="#drama" class="bg-darkCarbon text-white rounded-full px-6 py-3 font-medium flex items-center gap-2">
+                        剧目化训练 <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="mt-10">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="flex -space-x-3">
+                            <div class="w-10 h-10 rounded-full border-2 border-white/40 bg-neutralGray flex items-center justify-center overflow-hidden relative z-10">
+                                <i class="fa fa-user text-white text-sm"></i>
+                            </div>
+                            <div class="w-10 h-10 rounded-full border-2 border-white/40 bg-neutralGray flex items-center justify-center overflow-hidden relative z-20">
+                                <i class="fa fa-user text-white text-sm"></i>
+                            </div>
+                            <div class="w-10 h-10 rounded-full border-2 border-white/40 bg-neutralGray flex items-center justify-center overflow-hidden relative z-30">
+                                <i class="fa fa-user text-white text-sm"></i>
+                            </div>
+                            <div class="w-10 h-10 rounded-full border-2 border-white/40 bg-white/20 backdrop-blur-sm flex items-center justify-center text-xs font-bold text-white relative z-40">+</div>
+                        </div>
+                        <span class="text-sm opacity-80">多名参与者 · 完整剧目实践</span>
+                    </div>
+                    <div class="flex gap-10">
+                        <div>
+                            <div class="text-3xl font-bold text-white">
+                                <span class="stat-number" data-target="100" data-suffix="+">0</span>
+                            </div>
+                            <div class="text-xs opacity-70 mt-1">参与成员</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-white">
+                                <span class="stat-number" data-target="20" data-suffix="+">0</span>
+                            </div>
+                            <div class="text-xs opacity-70 mt-1">完整剧目</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-white">
+                                <span class="stat-number" data-target="500" data-suffix="h">0</span>
+                            </div>
+                            <div class="text-xs opacity-70 mt-1">排练时长</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 text-sm opacity-60" id="heroPageIndicator">01 / 03</div>
+            </div>
+            <div class="relative overflow-hidden">
+                <div class="overflow-hidden rounded-xl-card">
+                    <div class="flex transition-transform duration-500 ease-in-out" id="heroTrack">
+                       <!-- 轮播图 1 -->
+<div class="w-full flex-shrink-0 h-80 bg-[url('assets/images/hero/hero_slider_01.webp')] bg-cover bg-center rounded-xl-card"></div>
+<!-- 轮播图 2 -->
+<div class="w-full flex-shrink-0 h-80 bg-[url('assets/images/hero/hero_slider_02.webp')] bg-cover bg-center rounded-xl-card"></div>
+<!-- 轮播图 3 -->
+<div class="w-full flex-shrink-0 h-80 bg-[url('assets/images/hero/hero_slider_03.webp')] bg-cover bg-center rounded-xl-card"></div>
+                    </div>
+                </div>
+                <button class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm text-white border border-white/20 flex items-center justify-center hover:bg-white/30 transition z-10" id="heroPrev">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+                <button class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm text-white border border-white/20 flex items-center justify-center hover:bg-white/30 transition z-10" id="heroNext">
+                    <i class="fa fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 关于我们（浅灰背景） ===== -->
+<section id="about" class="py-24 bg-lightGray/40">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-4">
+            <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm bg-white">
+                <i class="fa fa-compass"></i>
+                <span>关于我们</span>
+            </div>
+        </div>
+        <div class="text-center mb-10">
+            <h2 class="text-[clamp(1.8rem,3vw,2.4rem)] font-bold mb-3">
+                光年译声空间 <span class="text-neutralGray">从热爱的初心中走来</span>
+            </h2>
+            <div class="flex flex-wrap gap-3 justify-center mt-12">
+                <span class="px-4 py-2 rounded-full bg-white text-darkCarbon text-sm shadow-sm">以表演为核心</span>
+                <span class="px-4 py-2 rounded-full bg-white text-darkCarbon text-sm shadow-sm">以声音为载体</span>
+                <span class="px-4 py-2 rounded-full bg-white text-darkCarbon text-sm shadow-sm">剧目化共同创作</span>
+            </div>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-14 items-start">
+            <div>
+                <p class="text-neutralGray leading-relaxed mb-5">
+                    光年译声空间，是一个以配音爱好为起点，以表演为核心，以声音为载体的共同创作空间。我们相信，配音不只是声音的模仿，更是表演艺术的呈现，是对人物的理解，是对角色的塑造，是对故事的再创作。
+                </p>
+                <p class="text-neutralGray leading-relaxed mb-5">
+                    回望国内配音行业历史，配音事业从筚路蓝缕走向辉煌，又历经低谷，直至迎来互联网时代多元的发展业态。七十余年的发展历程，让配音艺术在这片土地深深扎根。配音爱好者群体，本就对丰富配音生态有着举足轻重的意义。但圈子之中，长期充斥着唯音色论、唯戏感论、唯模仿论等固有偏见。
+                </p>
+                <p class="text-darkCarbon leading-relaxed font-medium">
+                    译声空间站在前人的积累之上，试图以剧目化的创作模式，让配音回归表演本身。让配音爱好者能够平等拥有参与作品录制的机会，也为同好提供可参考的学习资料与探索路径，倡导以创作，作为爱好者奔赴心中热爱的重要方式。
+                </p>
+            </div>
+            <div class="relative">
+                <div class="bg-darkCarbon rounded-hero-round p-8 md:p-10 text-white">
+                    <div class="text-sm text-white/60 mb-4">我们的理念</div>
+                    <div class="space-y-5">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fa fa-star text-white/80"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium mb-1">配音是表演艺术</div>
+                                <p class="text-sm text-white/60">配音是声台形表的高度凝练，是聚焦于台词层面的突出表现。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fa fa-microphone text-white/80"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium mb-1">声音是配音的载体</div>
+                                <p class="text-sm text-white/60">锤炼发声基本功，扫除表达阻碍，让声音服务于角色塑造。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fa fa-users text-white/80"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium mb-1">表演是群体艺术</div>
+                                <p class="text-sm text-white/60">依靠演员间真实的反应互相激发，依托多方协作完成剧目创作。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 知识线：译声资料库 ===== -->
+<section id="knowledge" class="py-24 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-4">
+                <i class="fa fa-book"></i>
+                <span>译声资料库</span>
+            </div>
+            <h2 class="text-[clamp(1.8rem,3vw,2.4rem)] font-bold mb-3">
+                触摸表演理论 <span class="text-neutralGray">解开声音束缚</span>
+            </h2>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-10">
+            <!-- 卡片1：表演基础 -->
+            <a href="library-acting.html" class="group block rounded-xl-card overflow-hidden shadow-md bg-white border transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <!-- 表演基础 -->
+<div class="h-60 bg-[url('assets/images/library/lib_acting_cover.webp')] bg-cover bg-center transition-transform duration-500 group-hover:scale-105"></div>
+                <div class="p-6 relative bg-white">
+                    <h3 class="font-bold text-xl mb-2 flex items-center justify-between">
+                        表演基础
+                        <i class="fa fa-arrow-right text-neutralGray group-hover:text-darkCarbon transition-colors"></i>
+                    </h3>
+                    <p class="text-sm text-neutralGray">从人物动机出发，建立完整角色声音画像，回归表演本身。</p>
+                </div>
+            </a>
+
+            <!-- 卡片2：台词基础 -->
+            <a href="library-lines.html" class="group block rounded-xl-card overflow-hidden shadow-md bg-white border transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <!-- 台词基础 -->
+<div class="h-60 bg-[url('assets/images/library/lib_lines_cover.webp')] bg-cover bg-center transition-transform duration-500 group-hover:scale-105"></div>
+                <div class="p-6 relative bg-white">
+                    <h3 class="font-bold text-xl mb-2 flex items-center justify-between">
+                        台词基础
+                        <i class="fa fa-arrow-right text-neutralGray group-hover:text-darkCarbon transition-colors"></i>
+                    </h3>
+                    <p class="text-sm text-neutralGray">气息、咬字、情绪处理，拒绝模板化朗读，锤炼发声基本功。</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 实践线：剧目化训练（高度绝对对齐版） ===== -->
+<section id="drama" class="py-24 bg-darkCarbon text-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center gap-2 border border-white/40 rounded-full px-3 py-1 text-sm mb-4">
+                <i class="fa fa-film"></i>
+                <span>剧目化训练</span>
+            </div>
+            <h2 class="text-[clamp(1.8rem,3vw,2.4rem)] font-bold mb-3">
+                探索译声的<span class="text-neutralGray">剧目化训练</span>
+            </h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto mt-10">
+            
+            <!-- 卡片 1：加了 min-h-[340px] 和 p-8 -->
+            <a href="drama.html" class="group flex flex-col justify-between bg-white/5 border border-white/10 rounded-2xl p-8 min-h-[340px] hover:bg-white/10 hover:border-white/30 transition-all duration-300 hover:-translate-y-1">
+                <div>
+                    <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa fa-sitemap text-xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">开源工作流</h3>
+                    <p class="text-sm text-white/60 leading-relaxed mb-6">
+                        从立项准备到录制归档，8个标准步骤深度拆解，让爱好者也能跑通专业级剧组流程。
+                    </p>
+                </div>
+                <div class="text-sm font-medium flex items-center gap-2 text-white/80 group-hover:text-white transition">
+                    查看流程 <i class="fa fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- 卡片 2 -->
+            <a href="drama.html" class="group flex flex-col justify-between bg-white text-darkCarbon border border-white rounded-2xl p-8 min-h-[340px] hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div>
+                    <div class="w-12 h-12 rounded-full bg-lightGray flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa fa-folder-open-o text-xl text-darkCarbon"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">创作工具包</h3>
+                    <p class="text-sm text-neutralGray leading-relaxed mb-6">
+                        制片、导演、CV、后期专属案头表格与模板。获取标准工具，记录你的创作轨迹。
+                    </p>
+                </div>
+                <div class="text-sm font-medium flex items-center gap-2 text-darkCarbon group-hover:text-black transition">
+                    获取工具 <i class="fa fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- 卡片 3 -->
+            <a href="drama.html" class="group flex flex-col justify-between bg-white/5 border border-white/10 rounded-2xl p-8 min-h-[340px] hover:bg-white/10 hover:border-white/30 transition-all duration-300 hover:-translate-y-1">
+                <div>
+                    <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa fa-star-o text-xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">认证主创</h3>
+                    <p class="text-sm text-white/60 leading-relaxed mb-6">
+                        走过完整流程、用作品证明过自己的创作者名录，见证热爱与专业的力量。
+                    </p>
+                </div>
+                <div class="text-sm font-medium flex items-center gap-2 text-white/80 group-hover:text-white transition">
+                    认识他们 <i class="fa fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- 卡片 4 -->
+            <a href="drama-projects.html" class="group flex flex-col justify-between bg-white text-darkCarbon border border-white rounded-2xl p-8 min-h-[340px] hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div>
+                    <div class="w-12 h-12 rounded-full bg-lightGray flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa fa-archive text-xl text-darkCarbon"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">项目资产沉淀</h3>
+                    <p class="text-sm text-neutralGray leading-relaxed mb-6">
+                        各项目真实的案头表格与复盘记录。在线查看创作思考，共享开源经验。
+                    </p>
+                </div>
+                <div class="text-sm font-medium flex items-center gap-2 text-darkCarbon group-hover:text-black transition">
+                    查看档案 <i class="fa fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>
+<!-- ===== 行业认知时间轴 + 人员展示墙 ===== -->
+<section class="py-24 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="grid lg:grid-cols-2 gap-14">
+            <div>
+                <div class="mb-8">
+                    <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-3">
+                        <i class="fa fa-history"></i>
+                        <span>行业认知</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">配音行业发展时间轴</h3>
+                    <p class="text-neutralGray text-sm">梳理国内配音发展关键节点，建立历史视野。</p>
+                </div>
+                <div class="space-y-8 border-l-2 border-lightGray pl-6">
+                    <div>
+                        <div class="font-bold">建国初期 · 国营译制事业起步</div>
+                        <p class="text-sm text-neutralGray mt-1">各大电影译制厂建立，形成第一代严谨专业译配体系。</p>
+                    </div>
+                    <div>
+                        <div class="font-bold">八九十年代 · 译制片黄金时代</div>
+                        <p class="text-sm text-neutralGray mt-1">大量海外影视引进，经典配音深入人心，形成独特艺术审美。</p>
+                    </div>
+                    <div>
+                        <div class="font-bold">2000年后 · 商业化动画影视兴起</div>
+                        <p class="text-sm text-neutralGray mt-1">国产动画、游戏产业扩张，商业配音市场快速扩张。</p>
+                    </div>
+                    <div>
+                        <div class="font-bold">互联网时代 · 圈层爱好职业化浪潮</div>
+                        <p class="text-sm text-neutralGray mt-1">网络广播剧兴起，爱好与职业边界模糊，行业机遇与乱象并存。</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="mb-8">
+                    <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-3">
+                        <i class="fa fa-users"></i>
+                        <span>剧目剧组</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">参与人员展示墙</h3>
+                    <p class="text-neutralGray text-sm">点击卡片查看代表参与剧目。</p>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white rounded-xl-card p-4 text-center cursor-pointer transition-all duration-300 border shadow-sm" onclick="toggleExpand(this)">
+                        <div>
+                            <div class="w-16 h-16 rounded-full bg-lightGray mx-auto mb-2"></div>
+                            <div class="font-medium">导演</div>
+                            <div class="text-xs text-neutralGray">剧目统筹</div>
+                        </div>
+                        <div class="expand-content mt-4 hidden text-left border-t border-lightGray pt-3">
+                            <div class="text-sm font-medium mb-2">代表剧目</div>
+                            <ul class="text-sm text-neutralGray space-y-1">
+                                <li>《玩偶之家》音频版</li>
+                                <li>《小城故事》广播剧</li>
+                            </ul>
+                            <div class="text-xs text-neutralGray mt-2">再次点击收起</div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl-card p-4 text-center cursor-pointer transition-all duration-300 border shadow-sm" onclick="toggleExpand(this)">
+                        <div>
+                            <div class="w-16 h-16 rounded-full bg-lightGray mx-auto mb-2"></div>
+                            <div class="font-medium">编剧</div>
+                            <div class="text-xs text-neutralGray">剧本改编</div>
+                        </div>
+                        <div class="expand-content mt-4 hidden text-left border-t border-lightGray pt-3">
+                            <div class="text-sm font-medium mb-2">代表剧目</div>
+                            <ul class="text-sm text-neutralGray space-y-1">
+                                <li>《秋河夜泊》</li>
+                                <li>《远山来信》</li>
+                            </ul>
+                            <div class="text-xs text-neutralGray mt-2">再次点击收起</div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl-card p-4 text-center cursor-pointer transition-all duration-300 border shadow-sm" onclick="toggleExpand(this)">
+                        <div>
+                            <div class="w-16 h-16 rounded-full bg-lightGray mx-auto mb-2"></div>
+                            <div class="font-medium">配音演员</div>
+                            <div class="text-xs text-neutralGray">角色演绎</div>
+                        </div>
+                        <div class="expand-content mt-4 hidden text-left border-t border-lightGray pt-3">
+                            <div class="text-sm font-medium mb-2">代表剧目</div>
+                            <ul class="text-sm text-neutralGray space-y-1">
+                                <li>《玩偶之家》｜男主</li>
+                                <li>《临江渡》｜旁白</li>
+                                <li>《秋河夜泊》｜配角</li>
+                            </ul>
+                            <div class="text-xs text-neutralGray mt-2">再次点击收起</div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl-card p-4 text-center cursor-pointer transition-all duration-300 border shadow-sm" onclick="toggleExpand(this)">
+                        <div>
+                            <div class="w-16 h-16 rounded-full bg-lightGray mx-auto mb-2"></div>
+                            <div class="font-medium">后期美工</div>
+                            <div class="text-xs text-neutralGray">音频与视觉制作</div>
+                        </div>
+                        <div class="expand-content mt-4 hidden text-left border-t border-lightGray pt-3">
+                            <div class="text-sm font-medium mb-2">参与项目</div>
+                            <ul class="text-sm text-neutralGray space-y-1">
+                                <li>全部剧目音频混音</li>
+                                <li>剧目封面视觉设计</li>
+                            </ul>
+                            <div class="text-xs text-neutralGray mt-2">再次点击收起</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 精选作品展示 ===== -->
+<section id="process" class="py-24 bg-lightGray/40">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-14">
+            <div class="inline-flex items-center gap-2 border border-darkCarbon rounded-full px-3 py-1 text-sm mb-4">
+                <i class="fa fa-headphones"></i>
+                <span>作品与访谈</span>
+            </div>
+            <h2 class="text-[clamp(1.8rem,3vw,2.4rem)] font-bold mb-3">
+                聆听声音背后的<span class="text-neutralGray">故事与实践</span>
+            </h2>
+            <p class="text-neutralGray text-sm max-w-xl mx-auto">
+                精选来自译声空间的优秀剧目作品，直击主创深度访谈。
+            </p>
+        </div>
+
+         <!-- 精选 3 个作品卡片 (纯 CSS 封面版) -->
+        <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            
+            <!-- 作品 1 -->
+            <a href="works.html" class="group block bg-white rounded-xl-card overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-lightGray/50">
+                <div class="h-48 overflow-hidden relative">
+                    <div class="w-full h-full bg-gradient-to-br from-darkCarbon to-neutralGray flex items-center justify-center p-6 text-center group-hover:scale-105 transition-transform duration-500">
+                        <span class="text-white font-bold text-2xl tracking-widest text-shadow">《玩偶之家》</span>
+                    </div>
+                    <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-blue-600 transition">《玩偶之家》音频版</h3>
+                    <p class="text-sm text-neutralGray line-clamp-2">经典名著的现代演绎，通过声音重塑娜拉的觉醒之旅。</p>
+                </div>
+            </a>
+
+            <!-- 作品 2 -->
+            <a href="works.html" class="group block bg-white rounded-xl-card overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-lightGray/50">
+                <div class="h-48 overflow-hidden relative">
+                    <div class="w-full h-full bg-gradient-to-br from-neutralGray to-lightGray flex items-center justify-center p-6 text-center group-hover:scale-105 transition-transform duration-500">
+                        <span class="text-darkCarbon font-bold text-2xl tracking-widest">《远山来信》</span>
+                    </div>
+                    <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-blue-600 transition">《远山来信》广播剧</h3>
+                    <p class="text-sm text-neutralGray line-clamp-2">一部关于等待与重逢的原创广播剧，声音空间感极其丰富。</p>
+                </div>
+            </a>
+
+            <!-- 作品 3 -->
+            <a href="works.html" class="group block bg-white rounded-xl-card overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-lightGray/50">
+                <div class="h-48 overflow-hidden relative">
+                    <div class="w-full h-full bg-gradient-to-br from-darkCarbon to-neutralGray flex items-center justify-center p-6 text-center group-hover:scale-105 transition-transform duration-500">
+                        <span class="text-white font-bold text-2xl tracking-widest text-shadow">更多作品</span>
+                    </div>
+                    <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-blue-600 transition">更多精彩作品</h3>
+                    <p class="text-sm text-neutralGray line-clamp-2">进入作品库，查看更多完整剧目与主创访谈记录。</p>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- 居中查看全部按钮 -->
+        <div class="text-center mt-12">
+            <a href="works.html" class="inline-flex items-center gap-2 bg-darkCarbon text-white rounded-full px-8 py-3 text-sm font-medium hover:bg-black transition shadow-lg">
+                查看全部作品与访谈 <i class="fa fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<!-- ===== 页脚 ===== -->
+<footer id="footer" class="pb-12 pt-16">
+    <div class="container mx-auto px-4">
+        <div class="bg-darkCarbon text-white rounded-hero-round p-8 md:p-12">
+            <div class="md:flex justify-between items-center gap-8 pb-10 border-b border-white/20 mb-10">
+                <div class="mb-8 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-3">发起项目 / 参与实战</h3>
+                    <p class="text-white/70 text-sm max-w-md leading-relaxed">如果你有剧本想发起项目，或者想以导演、CV、后期的身份加入剧组，请扫码进群，和我们一起跑通完整的剧目化工作流。</p>
+                </div>
+                
+                <!-- 二维码区域 -->
+                <div class="flex gap-6">
+                    <!-- QQ 群 -->
+                    <div class="text-center">
+                        <div class="w-24 h-24 bg-white rounded-xl p-1.5 mb-2 shadow-lg">
+                            <div class="w-full h-full bg-lightGray flex flex-col items-center justify-center rounded-lg text-neutralGray text-sm font-medium">
+                                <span>QQ群</span>
+                                <span>筹备中</span>
+                            </div>
+                        </div>
+                        <div class="text-xs text-white/80">QQ 交流群</div>
+                    </div>
+
+                    <!-- 微信群 -->
+                    <div class="text-center">
+                        <div class="w-24 h-24 bg-white rounded-xl p-1.5 mb-2 shadow-lg">
+                            <div class="w-full h-full bg-lightGray flex flex-col items-center justify-center rounded-lg text-neutralGray text-sm font-medium">
+                                <span>微信群</span>
+                                <span>筹备中</span>
+                            </div>
+                        </div>
+                        <div class="text-xs text-white/80">微信交流群</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-xl font-bold mb-4">译声</div>
+                    <p class="text-sm text-white/60">专注配音知识研究与剧目化音频实践，区分爱好与职业，回归配音艺术本身。</p>
+                </div>
+                <div>
+                    <h5 class="font-medium mb-4">导航</h5>
+                    <ul class="space-y-2 text-sm text-white/60">
+                        <li><a href="#hero">首页</a></li>
+                        <li><a href="#knowledge">译声资料库</a></li>
+                        <li><a href="#drama">剧目化训练</a></li>
+                        <li><a href="#process">作品与访谈</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-medium mb-4">联系我们</h5>
+                    <ul class="space-y-2 text-sm text-white/60">
+                        <li>2271324643@qq.com</li>
+                        <li>项目参与咨询</li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-medium mb-4">相关说明</h5>
+                    <ul class="space-y-2 text-sm text-white/60">
+                        <li>项目介绍</li>
+                        <li>常见问题</li>
+                        <li>版权声明</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-10 flex flex-wrap justify-between items-center">
+                <div class="flex gap-4">
+                    <i class="fa fa-weibo text-lg"></i>
+                    <i class="fa fa-wechat text-lg"></i>
+                    <i class="fa fa-github text-lg"></i>
+                </div>
+                                <div class="text-xs text-white/40 mt-4 md:mt-0 flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+                    <span>© 2026 译声 保留全部权利</span>
+                    <span class="hidden md:inline">|</span>
+                    <span>部分图片素材来源于免费图库 Unsplash 与 Pexels</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+// ===== 卡片原地展开收起 =====
+function toggleExpand(cardEl){
+    const content = cardEl.querySelector('.expand-content');
+    content.classList.toggle('hidden');
+}
+
+// ===== 数字滚动统计动画 =====
+(function() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    let animated = false;
+
+    function animateNumber(el) {
+        const target = parseInt(el.dataset.target);
+        const suffix = el.dataset.suffix || '';
+        const duration = 1500;
+        const startTime = performance.now();
+
+        function update(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const currentValue = Math.floor(eased * target);
+            el.textContent = currentValue + suffix;
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            } else {
+                el.textContent = target + suffix;
+            }
+        }
+        requestAnimationFrame(update);
+    }
+
+    function checkVisibility() {
+        if (animated) return;
+        const heroSection = document.getElementById('hero');
+        if (!heroSection) return;
+        const rect = heroSection.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            animated = true;
+            statNumbers.forEach(animateNumber);
+        }
+    }
+
+    window.addEventListener('scroll', checkVisibility, { passive: true });
+    window.addEventListener('load', function() {
+        setTimeout(checkVisibility, 300);
+    });
+    checkVisibility();
+})();
+
+// ===== Hero 轮播功能 =====
+(function() {
+    const track = document.getElementById('heroTrack');
+    const slides = track.querySelectorAll('.flex-shrink-0');
+    const totalSlides = slides.length;
+    const prevBtn = document.getElementById('heroPrev');
+    const nextBtn = document.getElementById('heroNext');
+    const pageIndicator = document.getElementById('heroPageIndicator');
+
+    let currentIndex = 0;
+    let autoPlayTimer = null;
+    let isTransitioning = false;
+
+    function goTo(index) {
+        if (isTransitioning) return;
+        if (index < 0) index = totalSlides - 1;
+        if (index >= totalSlides) index = 0;
+        currentIndex = index;
+        isTransitioning = true;
+
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+        if (pageIndicator) {
+            const currentNum = String(currentIndex + 1).padStart(2, '0');
+            const totalNum = String(totalSlides).padStart(2, '0');
+            pageIndicator.textContent = `${currentNum} / ${totalNum}`;
+        }
+
+        setTimeout(function() {
+            isTransitioning = false;
+        }, 500);
+    }
+
+    function nextSlide() { goTo(currentIndex + 1); }
+    function prevSlide() { goTo(currentIndex - 1); }
+
+    function resetAutoPlay() {
+        if (autoPlayTimer) {
+            clearInterval(autoPlayTimer);
+            autoPlayTimer = setInterval(nextSlide, 5000);
+        }
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            nextSlide();
+            resetAutoPlay();
+        });
+    }
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            prevSlide();
+            resetAutoPlay();
+        });
+    }
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const heroContainer = document.querySelector('#hero .relative.overflow-hidden');
+
+    if (heroContainer) {
+        heroContainer.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        heroContainer.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+                resetAutoPlay();
+            }
+        }, { passive: true });
+    }
+
+    goTo(0);
+    autoPlayTimer = setInterval(nextSlide, 5000);
+
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            if (autoPlayTimer) {
+                clearInterval(autoPlayTimer);
+                autoPlayTimer = null;
+            }
+        } else {
+            if (!autoPlayTimer) {
+                autoPlayTimer = setInterval(nextSlide, 5000);
+            }
+        }
+    });
+})();
+
+// ===== 平滑滚动 =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetDom = document.querySelector(targetId);
+        if(targetDom){
+            window.scrollTo({
+                top: targetDom.offsetTop - 120,
+                behavior: 'smooth'
+            })
+        }
+    })
+})
+// ===== 解决刷新时被导航栏挡住的问题 =====
+window.addEventListener('load', function() {
+    if (window.location.hash) {
+        const targetDom = document.querySelector(window.location.hash);
+        if (targetDom) {
+            setTimeout(() => {
+                window.scrollTo({
+                    top: targetDom.offsetTop - 120, 
+                    behavior: 'auto'
+                });
+            }, 10);
+        }
+    }
+});
+</script>
+</body>
+</html>

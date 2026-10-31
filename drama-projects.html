@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剧目化：项目资产沉淀 | 译声</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { darkCarbon: '#121212', neutralGray: '#777777', lightGray: '#E5E5E5' },
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                    borderRadius: { 'xl-card': '16px', 'hero-round': '24px' }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow { text-shadow: 0 2px 12px rgba(0,0,0,0.45); }
+            .scrollbar-hide::-webkit-scrollbar { display: none; }
+        }
+    </style>
+</head>
+<body class="bg-white font-sans text-darkCarbon overflow-x-hidden">
+
+<!-- 顶部导航（保持三段式胶囊） -->
+<header class="fixed top-0 left-0 w-full z-50 pointer-events-none">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between gap-4">
+        <div class="pointer-events-auto bg-darkCarbon/50 backdrop-blur-2xl backdrop-saturate-150 rounded-full px-6 py-3 shadow-2xl border border-white/20 transition-all duration-300 flex items-center">
+            <a href="index.html" class="hover:opacity-80 transition flex items-center">
+                <img src="assets/images/logo/logo_yisheng.png" alt="译声" class="h-7 w-auto object-contain">
+            </a>
+        </div>
+        <nav class="pointer-events-auto hidden md:flex items-center gap-x-4 bg-darkCarbon/50 backdrop-blur-2xl backdrop-saturate-150 rounded-full px-4 py-2 shadow-2xl border border-white/20 transition-all duration-300">
+            <a href="index.html" class="px-5 py-2 rounded-full text-white/70 hover:bg-white/20 hover:text-white transition text-sm">首页</a>
+            <a href="index.html#knowledge" class="px-5 py-2 rounded-full text-white/70 hover:bg-white/20 hover:text-white transition text-sm">译声资料库</a>
+            <!-- 当前页面高亮 -->
+            <a href="drama.html" class="px-5 py-2 rounded-full bg-white/30 text-white font-medium text-sm">剧目化训练</a>
+            <a href="index.html#process" class="px-5 py-2 rounded-full text-white/70 hover:bg-white/20 hover:text-white transition text-sm">作品与访谈</a>
+        </nav>
+        <div class="pointer-events-auto bg-darkCarbon/50 backdrop-blur-2xl backdrop-saturate-150 rounded-full shadow-2xl border border-white/20 transition-all duration-300">
+            <a href="index.html" class="block px-6 py-3 text-white text-sm font-medium flex items-center gap-2">
+                返回首页 <i class="fa fa-arrow-left"></i>
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- ===== 全局标题与切换按钮 (深色 Header) ===== -->
+<section class="bg-darkCarbon text-white pt-32 pb-20">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <!-- 切换胶囊 -->
+        <div class="flex flex-wrap items-center gap-2 mb-8">
+            <a href="drama.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white/70 hover:text-white hover:bg-white/20 transition text-sm">
+                <i class="fa fa-sitemap"></i> 开源工作流与工具
+            </a>
+            <!-- 当前高亮 -->
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-darkCarbon text-sm font-medium">
+                <i class="fa fa-folder-open-o"></i> 项目资产沉淀
+            </span>
+        </div>
+        
+        <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight text-shadow">
+            项目资产沉淀
+        </h1>
+        <p class="text-white/50 text-sm mt-4 max-w-xl">
+            这里是各项目走完开源工作流后留下的真实记录。点击项目名称即可展开查看各部门的案头表格与复盘思考。
+        </p>
+    </div>
+</section>
+
+<!-- 纯文字列表区（按状态分区） -->
+<section class="py-16 bg-white min-h-[50vh]">
+    <div class="container mx-auto px-4 max-w-3xl">
+        
+        <!-- 分区一：正在推进中 -->
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-6">
+                <h2 class="text-2xl font-bold text-darkCarbon">正在推进中</h2>
+                <span class="text-xs bg-green-100 text-green-700 border border-green-200 px-3 py-1 rounded-full font-medium">In Progress</span>
+            </div>
+            
+            <div class="border-t border-lightGray">
+                <!-- 项目：进行中示例 -->
+                <details class="group border-b border-lightGray">
+                    <summary class="flex items-center justify-between cursor-pointer list-none py-5 hover:bg-lightGray/20 px-4 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <span class="text-neutralGray group-open:text-darkCarbon transition-colors"><i class="fa fa-caret-right group-open:rotate-90 transition-transform inline-block w-4"></i></span>
+                            <div>
+                                <h3 class="text-lg font-bold">《新项目正在筹备中》</h3>
+                                <div class="text-sm text-neutralGray mt-1">2026年项目 · 完整剧目</div>
+                            </div>
+                        </div>
+                        <span class="text-xs text-green-700 bg-green-50 px-3 py-1 rounded-full hidden md:block border border-green-100">进行中</span>
+                    </summary>
+                    
+                    <!-- 展开的内容 -->
+                    <div class="px-12 pb-6 pt-2">
+                        <div class="space-y-3">
+                            <div class="text-sm text-neutralGray p-3 italic">该项目正在走流程中，部分案头资料已生成，将在结项后完整归档。</div>
+                            <a href="#" target="_blank" class="flex items-center gap-3 text-sm text-darkCarbon hover:text-blue-600 transition p-3 rounded-lg hover:bg-lightGray/30 border border-transparent hover:border-lightGray">
+                                <i class="fa fa-file-text-o text-neutralGray"></i>
+                                <span>[制片] 项目立项与统筹表</span>
+                            </a>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- 分区二：已归档项目 -->
+        <div>
+            <div class="flex items-center gap-3 mb-6">
+                <h2 class="text-2xl font-bold text-darkCarbon">已归档项目</h2>
+                <span class="text-xs bg-lightGray text-neutralGray border border-neutralGray/20 px-3 py-1 rounded-full font-medium">Archived</span>
+            </div>
+
+            <div class="border-t border-lightGray">
+                <!-- 项目 1：玩偶之家 -->
+                <details class="group border-b border-lightGray">
+                    <summary class="flex items-center justify-between cursor-pointer list-none py-5 hover:bg-lightGray/20 px-4 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <span class="text-neutralGray group-open:text-darkCarbon transition-colors"><i class="fa fa-caret-right group-open:rotate-90 transition-transform inline-block w-4"></i></span>
+                            <div>
+                                <h3 class="text-lg font-bold">《玩偶之家》音频版</h3>
+                                <div class="text-sm text-neutralGray mt-1">2026年项目 · 完整剧目</div>
+                            </div>
+                        </div>
+                        <span class="text-xs text-neutralGray bg-lightGray/50 px-3 py-1 rounded-full hidden md:block">已归档</span>
+                    </summary>
+                    
+                    <div class="px-12 pb-6 pt-2">
+                        <div class="space-y-3">
+                            <a href="这里填链接" target="_blank" class="flex items-center gap-3 text-sm text-darkCarbon hover:text-blue-600 transition p-3 rounded-lg hover:bg-lightGray/30 border border-transparent hover:border-lightGray">
+                                <i class="fa fa-file-text-o text-neutralGray"></i>
+                                <span>[制片] 项目立项与统筹表</span>
+                            </a>
+                            <a href="这里填链接" target="_blank" class="flex items-center gap-3 text-sm text-darkCarbon hover:text-blue-600 transition p-3 rounded-lg hover:bg-lightGray/30 border border-transparent hover:border-lightGray">
+                                <i class="fa fa-file-text-o text-neutralGray"></i>
+                                <span>[导演] 导演案头与排练计划表</span>
+                            </a>
+                            <a href="这里填链接" target="_blank" class="flex items-center gap-3 text-sm text-darkCarbon hover:text-blue-600 transition p-3 rounded-lg hover:bg-lightGray/30 border border-transparent hover:border-lightGray">
+                                <i class="fa fa-file-text-o text-neutralGray"></i>
+                                <span>[演员] 角色人物小传与心理分析</span>
+                            </a>
+                            <a href="这里填链接" target="_blank" class="flex items-center gap-3 text-sm text-darkCarbon hover:text-blue-600 transition p-3 rounded-lg hover:bg-lightGray/30 border border-transparent hover:border-lightGray">
+                                <i class="fa fa-file-text-o text-neutralGray"></i>
+                                <span>[后期] 音效空间与视觉设计表</span>
+                            </a>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- 项目 2：远山来信 -->
+                <details class="group border-b border-lightGray">
+                    <summary class="flex items-center justify-between cursor-pointer list-none py-5 hover:bg-lightGray/20 px-4 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <span class="text-neutralGray group-open:text-darkCarbon transition-colors"><i class="fa fa-caret-right group-open:rotate-90 transition-transform inline-block w-4"></i></span>
+                            <div>
+                                <h3 class="text-lg font-bold">《远山来信》广播剧</h3>
+                                <div class="text-sm text-neutralGray mt-1">2026年项目 · 专题研习</div>
+                            </div>
+                        </div>
+                        <span class="text-xs text-neutralGray bg-lightGray/50 px-3 py-1 rounded-full hidden md:block">已归档</span>
+                    </summary>
+                    <div class="px-12 pb-6 pt-2">
+                        <div class="space-y-3">
+                            <a href="#" class="flex items-center gap-3 text-sm text-darkCarbon hover:text-blue-600 transition p-3 rounded-lg hover:bg-lightGray/30 border border-transparent hover:border-lightGray">
+                                <i class="fa fa-file-text-o text-neutralGray"></i>
+                                <span>[导演] 导演案头与排练计划表</span>
+                            </a>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<footer class="bg-darkCarbon text-white">
+    <div class="container mx-auto px-4 max-w-4xl py-10 flex flex-wrap justify-between items-center gap-4">
+        
+        <div class="text-xs text-white/40 mt-4 md:mt-0 flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+            <span>© 2026 译声 保留全部权利</span>
+            <span class="hidden md:inline">|</span>
+            <span>部分图片素材来源于免费图库 Unsplash 与 Pexels</span>
+        </div>
+
+        <div class="flex gap-4 text-white/60">
+            <i class="fa fa-weibo text-lg"></i>
+            <i class="fa fa-wechat text-lg"></i>
+            <i class="fa fa-github text-lg"></i>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

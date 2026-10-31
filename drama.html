@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剧目化：开源创作工作流 | 译声</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkCarbon: '#121212',
+                        neutralGray: '#777777',
+                        lightGray: '#E5E5E5',
+                    },
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                    borderRadius: { 'xl-card': '16px', 'hero-round': '24px' }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow { text-shadow: 0 2px 12px rgba(0,0,0,0.45); }
+            .scrollbar-hide::-webkit-scrollbar { display: none; }
+        }
+    </style>
+</head>
+<body class="bg-white font-sans text-darkCarbon overflow-x-hidden">
+
+<!-- ===== 顶部导航（保持三段式胶囊风格，适配深色标题区） ===== -->
+<header class="fixed top-0 left-0 w-full z-50 pointer-events-none">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between gap-4">
+        <div class="pointer-events-auto bg-darkCarbon/50 backdrop-blur-2xl backdrop-saturate-150 rounded-full px-6 py-3 shadow-2xl border border-white/20 transition-all duration-300 flex items-center">
+            <a href="index.html" class="hover:opacity-80 transition flex items-center">
+    <img src="assets/images/logo/logo_yisheng.png" alt="译声" class="h-7 w-auto object-contain">
+</a>
+        </div>
+        <nav class="pointer-events-auto hidden md:flex items-center gap-x-4 bg-darkCarbon/50 backdrop-blur-2xl backdrop-saturate-150 rounded-full px-4 py-2 shadow-2xl border border-white/20 transition-all duration-300">
+            <a href="index.html" class="px-5 py-2 rounded-full text-white/70 hover:bg-white/20 hover:text-white transition text-sm">首页</a>
+            <a href="index.html#knowledge" class="px-5 py-2 rounded-full text-white/70 hover:bg-white/20 hover:text-white transition text-sm">译声资料库</a>
+            <!-- 当前页面高亮 -->
+            <a href="drama.html" class="px-5 py-2 rounded-full bg-white/30 text-white font-medium text-sm">剧目化训练</a>
+            <a href="index.html#process" class="px-5 py-2 rounded-full text-white/70 hover:bg-white/20 hover:text-white transition text-sm">作品与访谈</a>
+        </nav>
+        <div class="pointer-events-auto bg-darkCarbon/50 backdrop-blur-2xl backdrop-saturate-150 rounded-full shadow-2xl border border-white/20 transition-all duration-300">
+            <a href="index.html" class="block px-6 py-3 text-white text-sm font-medium flex items-center gap-2">
+                返回首页 <i class="fa fa-arrow-left"></i>
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- ===== 全局标题与切换按钮 (深色 Header) ===== -->
+<section class="bg-darkCarbon text-white pt-32 pb-20">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <!-- 这里就是我们新加的切换胶囊 -->
+        <div class="flex flex-wrap items-center gap-2 mb-8">
+            <!-- 当前高亮 -->
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-darkCarbon text-sm font-medium">
+                <i class="fa fa-sitemap"></i> 开源工作流与工具
+            </span>
+            <!-- 链接到资产沉淀页 -->
+            <a href="drama-projects.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white/70 hover:text-white hover:bg-white/20 transition text-sm">
+                <i class="fa fa-folder-open-o"></i> 项目资产沉淀
+            </a>
+        </div>
+
+        <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight text-shadow">
+            剧目化：开源创作工作流
+        </h1>
+        <p class="text-white/50 text-sm mt-4 max-w-xl">
+            让爱好者能够平等地参与作品，把“不可言说”的经验沉淀为开源档案。
+        </p>
+    </div>
+</section>
+<!-- ===== 区块一：开源工作流（时间轴） ===== -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <h2 class="text-3xl font-bold mb-12 flex items-center gap-3">
+            <span class="w-1.5 h-8 bg-darkCarbon rounded-full"></span>
+            一、开源工作流
+        </h2>
+
+        <!-- 阶段一：准备阶段 -->
+        <div class="mb-12">
+            <h3 class="text-xl font-bold text-neutralGray mb-6 flex items-center gap-3">
+                <i class="fa fa-cogs"></i> 第一阶段：准备阶段（立项与共识）
+            </h3>
+            <!-- 时间轴容器 -->
+            <div class="relative border-l-2 border-lightGray ml-4 md:ml-6 space-y-8 pb-4">
+                
+                <!-- 步骤 01 -->
+                <div class="relative pl-8 md:pl-10">
+                    <span class="absolute -left-[21px] top-1 w-10 h-10 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm font-bold shadow-md">01</span>
+                    <div class="bg-white p-5 rounded-xl-card border border-lightGray hover:shadow-md transition">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="text-lg font-bold">选材定本</h4>
+                            <span class="text-xs bg-lightGray text-darkCarbon px-3 py-1 rounded-full font-medium">制片人</span>
+                        </div>
+                        <p class="text-sm text-neutralGray leading-relaxed">确定剧本，明确项目愿景与合作性质。</p>
+                    </div>
+                </div>
+
+                <!-- 步骤 02 -->
+                <div class="relative pl-8 md:pl-10">
+                    <span class="absolute -left-[21px] top-1 w-10 h-10 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm font-bold shadow-md">02</span>
+                    <div class="bg-white p-5 rounded-xl-card border border-lightGray hover:shadow-md transition">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="text-lg font-bold">组前会议</h4>
+                            <span class="text-xs bg-lightGray text-darkCarbon px-3 py-1 rounded-full font-medium">制片 + 导演 + 编剧</span>
+                        </div>
+                        <p class="text-sm text-neutralGray leading-relaxed">三方对齐，确定主题意蕴、切入角度与声音基调。</p>
+                    </div>
+                </div>
+
+                <!-- 步骤 03 -->
+                <div class="relative pl-8 md:pl-10">
+                    <span class="absolute -left-[21px] top-1 w-10 h-10 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm font-bold shadow-md">03</span>
+                    <div class="bg-white p-5 rounded-xl-card border border-lightGray hover:shadow-md transition">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="text-lg font-bold">剧组搭建</h4>
+                            <span class="text-xs bg-lightGray text-darkCarbon px-3 py-1 rounded-full font-medium">制片 + 导演</span>
+                        </div>
+                        <p class="text-sm text-neutralGray leading-relaxed">发布招募，组建CV、后期、美术等班底。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 阶段二：制作阶段 -->
+        <div class="mb-12">
+            <h3 class="text-xl font-bold text-neutralGray mb-6 flex items-center gap-3">
+                <i class="fa fa-microphone"></i> 第二阶段：制作阶段（案头与录制）
+            </h3>
+            <div class="relative border-l-2 border-lightGray ml-4 md:ml-6 space-y-8 pb-4">
+                
+                <!-- 步骤 04 -->
+                <div class="relative pl-8 md:pl-10">
+                    <span class="absolute -left-[21px] top-1 w-10 h-10 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm font-bold shadow-md">04</span>
+                    <div class="bg-white p-5 rounded-xl-card border border-lightGray hover:shadow-md transition">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="text-lg font-bold">组后会议与围读</h4>
+                            <span class="text-xs bg-lightGray text-darkCarbon px-3 py-1 rounded-full font-medium">全员</span>
+                        </div>
+                        <p class="text-sm text-neutralGray leading-relaxed">明确契约时间表；进行剧本围读；演员提交“人物小传”。</p>
+                    </div>
+                </div>
+
+                <!-- 步骤 05 -->
+                <div class="relative pl-8 md:pl-10">
+                    <span class="absolute -left-[21px] top-1 w-10 h-10 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm font-bold shadow-md">05</span>
+                    <div class="bg-white p-5 rounded-xl-card border border-lightGray hover:shadow-md transition">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="text-lg font-bold">片段试录定调</h4>
+                            <span class="text-xs bg-lightGray text-darkCarbon px-3 py-1 rounded-full font-medium">导演 + 演员</span>
+                        </div>
+                        <p class="text-sm text-neutralGray leading-relaxed">试音试录，校准声音基调。</p>
+                    </div>
+                </div>
+
+                <!-- 步骤 06 -->
+                <div class="relative pl-8 md:pl-10">
+                    <span class="absolute -left-[21px] top-1 w-10 h-10 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm font-bold shadow-md">06</span>
+                    <div class="bg-white p-5 rounded-xl-card border border-lightGray hover:shadow-md transition">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="text-lg font-bold">集中录音与补戏</h4>
+                            <span class="text-xs bg-lightGray text-darkCarbon px-3 py-1 rounded-full font-medium">全员</span>
+                        </div>
+                        <p class="text-sm text-neutralGray leading-relaxed">按场次进行同戏或分轨录制，查漏补缺。</p>
+                    </div>
+                </div>
+
+                <!-- 步骤 07 -->
+                <div class="relative pl-8 md:pl-10">
+                    <span class="absolute -left-[21px] top-1 w-10 h-10 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm font-bold shadow-md">07</span>
+                    <div class="bg-white p-5 rounded-xl-card border border-lightGray hover:shadow-md transition">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="text-lg font-bold">后期与审听</h4>
+                            <span class="text-xs bg-lightGray text-darkCarbon px-3 py-1 rounded-full font-medium">后期 + 主创</span>
+                        </div>
+                        <p class="text-sm text-neutralGray leading-relaxed">干音修整、混录、集体审听与定稿。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 阶段三：归档与沉淀 -->
+        <div>
+            <h3 class="text-xl font-bold text-neutralGray mb-6 flex items-center gap-3">
+                <i class="fa fa-archive"></i> 第三阶段：归档与沉淀（开源档案）
+            </h3>
+            <div class="relative border-l-2 border-lightGray ml-4 md:ml-6 space-y-8">
+                
+                <!-- 步骤 08 -->
+                <div class="relative pl-8 md:pl-10">
+                    <span class="absolute -left-[21px] top-1 w-10 h-10 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm font-bold shadow-md">08</span>
+                    <div class="bg-darkCarbon text-white p-5 rounded-xl-card shadow-lg">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="text-lg font-bold">物料投放与归档</h4>
+                            <span class="text-xs bg-white/20 text-white px-3 py-1 rounded-full font-medium">制片 + 美术</span>
+                        </div>
+                        <p class="text-sm text-white/70 leading-relaxed">宣发上线。所有会议纪要、小传、手记归档，成为本站的开源学习档案。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== 区块二：创作工具包 ===== -->
+<section class="py-20 bg-lightGray/40">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <h2 class="text-3xl font-bold mb-10 flex items-center gap-3">
+            <span class="w-1.5 h-8 bg-darkCarbon rounded-full"></span>
+            二、创作工具包
+        </h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- 卡片1：制片人 -->
+            <div class="bg-white p-6 rounded-xl-card shadow-sm border border-lightGray hover:shadow-md transition">
+                <div class="flex items-center gap-3 mb-4 border-b border-lightGray pb-4">
+                    <div class="w-10 h-10 rounded-full bg-darkCarbon text-white flex items-center justify-center">
+                        <i class="fa fa-briefcase"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg">制片人</h3>
+                        <div class="text-xs text-neutralGray">《项目立项与统筹表》</div>
+                    </div>
+                </div>
+                <ul class="text-sm text-neutralGray space-y-2">
+                    <li class="flex gap-2"><span>·</span> 剧本信息、合作性质</li>
+                    <li class="flex gap-2"><span>·</span> 项目愿景、全盘排期</li>
+                    <li class="flex gap-2"><span>·</span> 人员名单</li>
+                </ul>
+            </div>
+
+            <!-- 卡片2：导演 -->
+            <div class="bg-white p-6 rounded-xl-card shadow-sm border border-lightGray hover:shadow-md transition">
+                <div class="flex items-center gap-3 mb-4 border-b border-lightGray pb-4">
+                    <div class="w-10 h-10 rounded-full bg-darkCarbon text-white flex items-center justify-center">
+                        <i class="fa fa-video-camera"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg">导演</h3>
+                        <div class="text-xs text-neutralGray">《导演案头与排练计划表》</div>
+                    </div>
+                </div>
+                <ul class="text-sm text-neutralGray space-y-2">
+                    <li class="flex gap-2"><span>·</span> 主创会议记录</li>
+                    <li class="flex gap-2"><span>·</span> 选角标准</li>
+                    <li class="flex gap-2"><span>·</span> 围读排练时间表、终审记录</li>
+                </ul>
+            </div>
+
+            <!-- 卡片3：演员 -->
+            <div class="bg-white p-6 rounded-xl-card shadow-sm border border-lightGray hover:shadow-md transition">
+                <div class="flex items-center gap-3 mb-4 border-b border-lightGray pb-4">
+                    <div class="w-10 h-10 rounded-full bg-darkCarbon text-white flex items-center justify-center">
+                        <i class="fa fa-user-circle"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg">演员（CV）</h3>
+                        <div class="text-xs text-neutralGray">《人物小传与角色分析表》</div>
+                    </div>
+                </div>
+                <ul class="text-sm text-neutralGray space-y-2">
+                    <li class="flex gap-2"><span>·</span> 角色基本信息</li>
+                    <li class="flex gap-2"><span>·</span> 内在逻辑</li>
+                    <li class="flex gap-2"><span>·</span> 说话基调、关系网</li>
+                </ul>
+            </div>
+
+            <!-- 卡片4：后期/美术 -->
+            <div class="bg-white p-6 rounded-xl-card shadow-sm border border-lightGray hover:shadow-md transition">
+                <div class="flex items-center gap-3 mb-4 border-b border-lightGray pb-4">
+                    <div class="w-10 h-10 rounded-full bg-darkCarbon text-white flex items-center justify-center">
+                        <i class="fa fa-paint-brush"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg">后期 / 美术</h3>
+                        <div class="text-xs text-neutralGray">《音效与视觉设计表》</div>
+                    </div>
+                </div>
+                <ul class="text-sm text-neutralGray space-y-2">
+                    <li class="flex gap-2"><span>·</span> 声音风格、关键音效点</li>
+                    <li class="flex gap-2"><span>·</span> 海报风格</li>
+                    <li class="flex gap-2"><span>·</span> 物料清单</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 区块三：认证主创 ===== -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <h2 class="text-3xl font-bold mb-2 flex items-center gap-3">
+            <span class="w-1.5 h-8 bg-darkCarbon rounded-full"></span>
+            三、认证主创
+        </h2>
+        <p class="text-sm text-neutralGray mb-10 ml-4 pl-1">我们不展示所有人，只推荐那些走过完整流程、用作品证明过自己的创作者。</p>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- 主创 1 -->
+            <div class="bg-white border border-lightGray rounded-xl-card p-6 text-center hover:shadow-md transition">
+                <div class="w-24 h-24 rounded-full bg-lightGray mx-auto mb-4 flex items-center justify-center">
+                    <i class="fa fa-user text-4xl text-neutralGray/50"></i>
+                </div>
+                <h3 class="font-bold text-lg mb-1">认证导演</h3>
+                <div class="text-sm text-neutralGray mb-3">代表作：《玩偶之家》《远山来信》</div>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <span class="text-xs bg-lightGray/50 px-2 py-1 rounded text-darkCarbon">擅长悬疑</span>
+                    <span class="text-xs bg-lightGray/50 px-2 py-1 rounded text-darkCarbon">情感细腻</span>
+                </div>
+            </div>
+
+            <!-- 主创 2 -->
+            <div class="bg-white border border-lightGray rounded-xl-card p-6 text-center hover:shadow-md transition">
+                <div class="w-24 h-24 rounded-full bg-lightGray mx-auto mb-4 flex items-center justify-center">
+                    <i class="fa fa-user text-4xl text-neutralGray/50"></i>
+                </div>
+                <h3 class="font-bold text-lg mb-1">认证后期</h3>
+                <div class="text-sm text-neutralGray mb-3">代表作：《临江渡》《秋河夜泊》</div>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <span class="text-xs bg-lightGray/50 px-2 py-1 rounded text-darkCarbon">音效空间感强</span>
+                    <span class="text-xs bg-lightGray/50 px-2 py-1 rounded text-darkCarbon">音乐审美绝佳</span>
+                </div>
+            </div>
+
+            <!-- 主创 3 -->
+            <div class="bg-white border border-lightGray rounded-xl-card p-6 text-center hover:shadow-md transition">
+                <div class="w-24 h-24 rounded-full bg-lightGray mx-auto mb-4 flex items-center justify-center">
+                    <i class="fa fa-user text-4xl text-neutralGray/50"></i>
+                </div>
+                <h3 class="font-bold text-lg mb-1">认证编剧 / 制片</h3>
+                <div class="text-sm text-neutralGray mb-3">代表作：《小城故事》《远山来信》</div>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <span class="text-xs bg-lightGray/50 px-2 py-1 rounded text-darkCarbon">现实主义</span>
+                    <span class="text-xs bg-lightGray/50 px-2 py-1 rounded text-darkCarbon">大时代与小人物</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 底部区块：项目组队与交流 ===== -->
+<section class="py-20 bg-darkCarbon text-white">
+    <div class="container mx-auto px-4 max-w-3xl text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6">项目组队与交流</h2>
+        <p class="text-white/70 text-sm mb-12 max-w-lg mx-auto leading-relaxed">
+            如果你有剧本想发起项目，或者想以导演、CV、后期的身份加入项目，请扫码进群：
+        </p>
+        
+        <div class="flex flex-col md:flex-row justify-center gap-10">
+            <!-- 左：QQ群 -->
+            <div>
+                <div class="w-48 h-48 bg-white/10 border border-white/20 rounded-xl-card mx-auto mb-4 flex items-center justify-center p-2 relative overflow-hidden backdrop-blur-sm">
+                    <!-- 这里替换为真实的 <img> 标签 -->
+                    <span class="text-white/40 text-sm"><i class="fa fa-qrcode block text-4xl mb-2"></i>QQ群二维码</span>
+                </div>
+                <div class="font-medium">QQ 交流群</div>
+            </div>
+            
+            <!-- 右：微信群 -->
+            <div>
+                <div class="w-48 h-48 bg-white/10 border border-white/20 rounded-xl-card mx-auto mb-4 flex items-center justify-center p-2 relative overflow-hidden backdrop-blur-sm">
+                    <!-- 这里替换为真实的 <img> 标签 -->
+                    <span class="text-white/40 text-sm"><i class="fa fa-qrcode block text-4xl mb-2"></i>微信群二维码</span>
+                </div>
+                <div class="font-medium">微信交流群</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

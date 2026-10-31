@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>译声资料库 | 怎么去塑造一个人物</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkCarbon: '#121212',
+                        neutralGray: '#777777',
+                        lightGray: '#E5E5E5',
+                    },
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                    borderRadius: { 'xl-card': '16px', 'hero-round': '24px' }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow { text-shadow: 0 2px 12px rgba(0,0,0,0.45); }
+            .scrollbar-hide::-webkit-scrollbar { display: none; }
+        }
+    </style>
+</head>
+<body class="bg-white font-sans text-darkCarbon overflow-x-hidden">
+
+<!-- ===== 顶部导航栏（嵌入式毛玻璃版） ===== -->
+<header class="fixed top-0 left-0 w-full z-50 pointer-events-none">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between gap-4">
+        
+        <!-- 1. 左侧：Logo 区域 -->
+        <div class="pointer-events-auto bg-darkCarbon/50 backdrop-blur-2xl backdrop-saturate-150 rounded-full px-6 py-3 shadow-2xl border border-white/20 transition-all duration-300 flex items-center">
+            <a href="index.html" class="hover:opacity-80 transition flex items-center">
+                <img src="assets/images/logo/logo_yisheng.png" alt="译声" class="h-7 w-auto object-contain">
+            </a>
+        </div>
+
+        <!-- 2. 中间：导航菜单 -->
+        <nav class="pointer-events-auto hidden md:flex items-center gap-x-4 bg-darkCarbon/50 backdrop-blur-2xl backdrop-saturate-150 rounded-full px-4 py-2 shadow-2xl border border-white/20 transition-all duration-300">
+            <a href="index.html" class="px-5 py-2 rounded-full text-white/70 hover:bg-white/20 hover:text-white transition text-sm">首页</a>
+            <a href="index.html#knowledge" class="px-5 py-2 rounded-full bg-white/30 text-white font-medium text-sm">译声资料库</a>
+            <a href="index.html#drama" class="px-5 py-2 rounded-full text-white/70 hover:bg-white/20 hover:text-white transition text-sm">剧目化训练</a>
+            <a href="index.html#process" class="px-5 py-2 rounded-full text-white/70 hover:bg-white/20 hover:text-white transition text-sm">作品与访谈</a>
+        </nav>
+
+        <!-- 3. 右侧：按钮 -->
+        <div class="pointer-events-auto bg-darkCarbon/50 backdrop-blur-2xl backdrop-saturate-150 rounded-full shadow-2xl border border-white/20 transition-all duration-300">
+            <a href="index.html" class="block px-6 py-3 text-white text-sm font-medium flex items-center gap-2">
+                返回首页 <i class="fa fa-arrow-left"></i>
+            </a>
+        </div>
+
+    </div>
+</header>
+
+<!-- ===== 页面头部 ===== -->
+<section class="bg-darkCarbon text-white pt-32 pb-16">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <!-- 资料库切换条 -->
+        <div class="flex flex-wrap items-center gap-2 mb-6">
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-darkCarbon text-sm font-medium">
+                <i class="fa fa-book"></i> 表演基础
+            </span>
+            <a href="library-lines.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white/70 hover:text-white hover:bg-white/20 transition text-sm">
+                <i class="fa fa-comment"></i> 台词基础
+            </a>
+        </div>
+        <h1 class="text-[clamp(2rem,4vw,3rem)] font-bold leading-tight text-shadow mb-6">
+            怎么去塑造一个人物
+        </h1>
+        <p class="text-sm text-white/50 leading-relaxed max-w-2xl">
+            编者按：资料库分为“明述知识”与“默会知识”两部分——能写下来的方法在这里，写不下来的手感在实践里。如果读到某处卡住了，不用硬扛，进群问问，或者找人一起做一遍。
+        </p>
+    </div>
+</section>
+
+<!-- ===== 子问题导航 ===== -->
+<section class="py-14 bg-white border-b border-lightGray">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <div class="text-sm text-neutralGray mb-5">五个子问题 · 逐个展开</div>
+        <div class="space-y-3">
+            <a href="#q1" class="block bg-lightGray/50 border-l-4 border-darkCarbon rounded-r-xl-card px-5 py-4 hover:bg-lightGray transition">
+                <div class="flex items-start gap-3">
+                    <span class="text-sm font-bold text-neutralGray mt-0.5">01</span>
+                    <div>
+                        <div class="font-bold mb-1">创作是什么？</div>
+                        <div class="text-sm text-neutralGray">树立正确的创作意识</div>
+                    </div>
+                </div>
+            </a>
+            <a href="#q2" class="block bg-lightGray/50 border-l-4 border-darkCarbon rounded-r-xl-card px-5 py-4 hover:bg-lightGray transition">
+                <div class="flex items-start gap-3">
+                    <span class="text-sm font-bold text-neutralGray mt-0.5">02</span>
+                    <div>
+                        <div class="font-bold mb-1">人物怎么立起来？</div>
+                        <div class="text-sm text-neutralGray">理解分析剧本 → 体验人物 → 体现人物</div>
+                    </div>
+                </div>
+            </a>
+            <a href="#q3" class="block bg-lightGray/50 border-l-4 border-darkCarbon rounded-r-xl-card px-5 py-4 hover:bg-lightGray transition">
+                <div class="flex items-start gap-3">
+                    <span class="text-sm font-bold text-neutralGray mt-0.5">03</span>
+                    <div>
+                        <div class="font-bold mb-1">每个排练阶段解决什么问题？</div>
+                        <div class="text-sm text-neutralGray">初排、细排、联排彩排</div>
+                    </div>
+                </div>
+            </a>
+            <a href="#q4" class="block bg-lightGray/50 border-l-4 border-darkCarbon rounded-r-xl-card px-5 py-4 hover:bg-lightGray transition">
+                <div class="flex items-start gap-3">
+                    <span class="text-sm font-bold text-neutralGray mt-0.5">04</span>
+                    <div>
+                        <div class="font-bold mb-1">台词和形体怎么服务于人物？</div>
+                        <div class="text-sm text-neutralGray">语言的艺术处理、形体意识、性格化</div>
+                    </div>
+                </div>
+            </a>
+            <a href="#q5" class="block bg-lightGray/50 border-l-4 border-darkCarbon rounded-r-xl-card px-5 py-4 hover:bg-lightGray transition">
+                <div class="flex items-start gap-3">
+                    <span class="text-sm font-bold text-neutralGray mt-0.5">05</span>
+                    <div>
+                        <div class="font-bold mb-1">角色塑造成没成，看什么？</div>
+                        <div class="text-sm text-neutralGray">四层、客体世界、内部的人</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 第1个子问题 ===== -->
+<section id="q1" class="py-16 bg-white">
+    <div class="container mx-auto px-4 max-w-4xl">
+
+        <div class="flex items-center gap-4 mb-6">
+            <span class="text-4xl font-bold text-lightGray leading-none">01</span>
+            <div class="flex-1 h-px bg-lightGray"></div>
+        </div>
+        <h2 class="text-[clamp(1.6rem,3vw,2.2rem)] font-bold mb-3">创作是什么？</h2>
+        <p class="text-neutralGray mb-12">先把“创作”这个词说清楚，后面的方法才有地方落。</p>
+
+        <div class="mb-16">
+            <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-6">
+                <i class="fa fa-exclamation-triangle"></i>
+                <span>爱好者常见的三个误区</span>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-lightGray/30 rounded-xl-card p-6 border border-lightGray">
+                    <div class="font-bold text-lg mb-1">创作流程的问题</div>
+                    <div class="text-sm text-neutralGray mb-4">把“直接录”当成创作</div>
+                    <ul class="space-y-2 text-sm text-darkCarbon/80">
+                        <li class="flex gap-2"><span class="text-neutralGray">·</span><span>拿到台词直接开录，跳过读本与人物分析</span></li>
+                        <li class="flex gap-2"><span class="text-neutralGray">·</span><span>把“录完”当成“创作完成”</span></li>
+                        <li class="flex gap-2"><span class="text-neutralGray">·</span><span>没有试音、没有对戏，一个人对着手机走完整个流程</span></li>
+                    </ul>
+                </div>
+
+                <div class="bg-lightGray/30 rounded-xl-card p-6 border border-lightGray">
+                    <div class="font-bold text-lg mb-1">部门协作的问题</div>
+                    <div class="text-sm text-neutralGray mb-4">以为有了部门就等于做了戏</div>
+                    <ul class="space-y-2 text-sm text-darkCarbon/80">
+                        <li class="flex gap-2"><span class="text-neutralGray">·</span><span>组了剧组、分了角色、约了后期，就认为作品已经成立</span></li>
+                        <li class="flex gap-2"><span class="text-neutralGray">·</span><span>各环节各干各的，缺少统一的创作方向</span></li>
+                        <li class="flex gap-2"><span class="text-neutralGray">·</span><span>把“流程齐了”当成“戏做出来了”</span></li>
+                    </ul>
+                </div>
+
+                <div class="bg-lightGray/30 rounded-xl-card p-6 border border-lightGray">
+                    <div class="font-bold text-lg mb-1">艺术创作缺失的问题</div>
+                    <div class="text-sm text-neutralGray mb-4">跳过了真正让人物立起来的阶段</div>
+                    <ul class="space-y-2 text-sm text-darkCarbon/80">
+                        <li class="flex gap-2"><span class="text-neutralGray">·</span><span>只关心声音好不好听，不关心人物立不立得住</span></li>
+                        <li class="flex gap-2"><span class="text-neutralGray">·</span><span>用情绪模板代替人物逻辑</span></li>
+                        <li class="flex gap-2"><span class="text-neutralGray">·</span><span>从头到尾都在“演声音”，没有“演人”</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-16">
+            <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-6">
+                <i class="fa fa-compass"></i>
+                <span>创作真正是什么</span>
+            </div>
+
+            <div class="border-l-4 border-darkCarbon pl-5 mb-10">
+                <p class="text-[clamp(1.1rem,2vw,1.4rem)] font-bold leading-relaxed">
+                    创作不是从“张嘴”开始的，是从“拿到剧本”开始的。
+                </p>
+            </div>
+
+            <div class="mb-10">
+                <div class="text-sm text-neutralGray mb-3">创作链</div>
+                <div class="flex flex-col md:flex-row items-stretch gap-3">
+                    <div class="flex-1 bg-white border rounded-xl-card p-4">
+                        <div class="font-bold mb-1">理解分析剧本</div>
+                        <div class="text-sm text-neutralGray">弄清作者写了什么、人物处在什么处境里。</div>
+                    </div>
+                    <div class="hidden md:flex items-center text-neutralGray"><i class="fa fa-arrow-right"></i></div>
+                    <div class="flex-1 bg-white border rounded-xl-card p-4">
+                        <div class="font-bold mb-1">体验人物</div>
+                        <div class="text-sm text-neutralGray">让人物的动机和情感，在自己身上真实发生。</div>
+                    </div>
+                    <div class="hidden md:flex items-center text-neutralGray"><i class="fa fa-arrow-right"></i></div>
+                    <div class="flex-1 bg-white border rounded-xl-card p-4">
+                        <div class="font-bold mb-1">体现人物</div>
+                        <div class="text-sm text-neutralGray">用声音、台词、形体，把它呈现出来。</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <div class="text-sm text-neutralGray mb-3">排演链</div>
+                <div class="flex flex-col md:flex-row items-stretch gap-3">
+                    <div class="flex-1 bg-white border rounded-xl-card p-4">
+                        <div class="font-bold mb-1">初排</div>
+                        <div class="text-sm text-neutralGray">搭起人物关系和整体走向。</div>
+                    </div>
+                    <div class="hidden md:flex items-center text-neutralGray"><i class="fa fa-arrow-right"></i></div>
+                    <div class="flex-1 bg-white border rounded-xl-card p-4">
+                        <div class="font-bold mb-1">细排</div>
+                        <div class="text-sm text-neutralGray">逐段打磨细节，解决具体问题。</div>
+                    </div>
+                    <div class="hidden md:flex items-center text-neutralGray"><i class="fa fa-arrow-right"></i></div>
+                    <div class="flex-1 bg-white border rounded-xl-card p-4">
+                        <div class="font-bold mb-1">联排彩排</div>
+                        <div class="text-sm text-neutralGray">把各环节合起来，检验完整效果。</div>
+                    </div>
+                    <div class="hidden md:flex items-center text-neutralGray"><i class="fa fa-arrow-right"></i></div>
+                    <div class="flex-1 bg-white border rounded-xl-card p-4">
+                        <div class="font-bold mb-1">正式演出</div>
+                        <div class="text-sm text-neutralGray">作品交付到观众面前。</div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-neutralGray leading-relaxed mb-6">
+                创作链解决的是“人物从哪里来”，排演链解决的是“人物怎么一步步落地”。两条链是并行推进的，不是先想完再排、排完再想，而是在排演中不断回到创作链去确认。
+            </p>
+
+            <p class="text-darkCarbon font-medium">
+                理解了创作是什么，下一个问题就是——人物到底怎么立起来。
+            </p>
+        </div>
+
+        <div>
+            <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-6">
+                <i class="fa fa-check-circle"></i>
+                <span>正确的创作意识</span>
+            </div>
+
+            <div class="space-y-5">
+                <div class="border border-lightGray rounded-xl-card p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm font-bold flex-shrink-0">1</div>
+                        <div>
+                            <div class="font-bold text-lg mb-2">创作是集体协作</div>
+                            <p class="text-sm text-neutralGray leading-relaxed">
+                                表演是刺激与反应的学问——需要对手、需要导演、需要剧组。一个人可以练习，但做不出戏。找到人，一起认真。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border border-lightGray rounded-xl-card p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm font-bold flex-shrink-0">2</div>
+                        <div>
+                            <div class="font-bold text-lg mb-2">作品是给观众检验的</div>
+                            <p class="text-sm text-neutralGray leading-relaxed">
+                                发布即检验。服务观众不等于谄媚观众——要对观众负责，但不是讨好观众。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border border-lightGray rounded-xl-card p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm font-bold flex-shrink-0">3</div>
+                        <div>
+                            <div class="font-bold text-lg mb-2">先有意识，再谈能力</div>
+                            <p class="text-sm text-neutralGray leading-relaxed">
+                                意识决定方向，能力决定走多远。方向错了，能力越强，偏得越远。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 bg-darkCarbon text-white rounded-hero-round p-8">
+                <p class="text-lg font-medium leading-relaxed">
+                    这三条不是规矩，是方向。方向对了，方法才有地方落。
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== 第2个子问题 ===== -->
+<section id="q2" class="py-16 bg-white border-t border-lightGray">
+    <div class="container mx-auto px-4 max-w-4xl">
+
+        <div class="flex items-center gap-4 mb-6">
+            <span class="text-4xl font-bold text-lightGray leading-none">02</span>
+            <div class="flex-1 h-px bg-lightGray"></div>
+        </div>
+        <h2 class="text-[clamp(1.6rem,3vw,2.2rem)] font-bold mb-3">人物怎么立起来？</h2>
+        <p class="text-neutralGray mb-12">通过理解分析、体验、体现来实现</p>
+
+        <div class="mb-16">
+            <div class="text-sm text-neutralGray mb-3">三步递进</div>
+            <div class="flex flex-col md:flex-row items-stretch gap-3">
+                <div class="flex-1 bg-white border rounded-xl-card p-4">
+                    <div class="text-xs text-neutralGray mb-1">01</div>
+                    <div class="font-bold mb-1">理解分析剧本</div>
+                    <div class="text-sm text-neutralGray">先看大局，再找小处。</div>
+                </div>
+                <div class="hidden md:flex items-center text-neutralGray"><i class="fa fa-arrow-right"></i></div>
+                <div class="flex-1 bg-white border rounded-xl-card p-4">
+                    <div class="text-xs text-neutralGray mb-1">02</div>
+                    <div class="font-bold mb-1">体验人物</div>
+                    <div class="text-sm text-neutralGray">找到他的心理依据。</div>
+                </div>
+                <div class="hidden md:flex items-center text-neutralGray"><i class="fa fa-arrow-right"></i></div>
+                <div class="flex-1 bg-white border rounded-xl-card p-4">
+                    <div class="text-xs text-neutralGray mb-1">03</div>
+                    <div class="font-bold mb-1">体现人物</div>
+                    <div class="text-sm text-neutralGray">让“他”活过来。</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-16">
+            <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-6">
+                <i class="fa fa-search"></i>
+                <span>理解分析剧本</span>
+            </div>
+            <h3 class="text-xl font-bold mb-6">先看大局，再找小处</h3>
+
+            <div class="space-y-4">
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">先把握大的</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">时代背景、大的规定情境、他要干什么——这是大行动。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">再掌握小的</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">每一幕有哪些行动，行动串成行动线，指向这一幕的最高任务或核心矛盾；各幕行动线再串起来，指向整部戏的最高任务。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">方法</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">分事件 → 分单位 → 找行动 → 串行动线 → 指向最高任务。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">产物</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">大的方向和最高任务先立住，再进入每一场、每一句的具体分析。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-16">
+            <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-6">
+                <i class="fa fa-heart"></i>
+                <span>体验人物</span>
+            </div>
+            <h3 class="text-xl font-bold mb-6">找到他的心理依据</h3>
+
+            <div class="space-y-4">
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">两个来源</div>
+                    <ul class="space-y-2 text-sm text-darkCarbon/80">
+                        <li class="flex gap-2"><span class="text-neutralGray">·</span><span>文本之中——台词、舞台提示、人物关系、事件</span></li>
+                        <li class="flex gap-2"><span class="text-neutralGray">·</span><span>文本之外——相关文字与视频资料、对现实人物的观察</span></li>
+                    </ul>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">一个形象</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">通过来源，在心里形成一个具体的人。可以是现实中的人，也可以是由此想象出来的人，但一定具体、不抽象。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">产物</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">形成人物心象（内心视象），找到潜台词和内心独白。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">提醒</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">体验不是一次完成，是和体现交替打磨。</p>
+                </div>
+            </div>
+
+            <div class="border-l-4 border-darkCarbon pl-5 mt-8">
+                <p class="text-[clamp(1.05rem,2vw,1.3rem)] font-bold leading-relaxed">
+                    体验人物不是空想，是先找到具体的形象。
+                </p>
+            </div>
+        </div>
+
+        <div>
+            <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-6">
+                <i class="fa fa-microphone"></i>
+                <span>体现人物</span>
+            </div>
+            <h3 class="text-xl font-bold mb-6">让“他”活过来</h3>
+
+            <div class="space-y-4">
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">体现的方向</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">把理解到、体验到的东西，用声音和身体做出来。不是再演一遍理解，是让人物个性化出现，基本创造出有鲜明性格特色的人物形象。排练是体现，正式演出、录音也是体现。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">体现的手段</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">语言的艺术处理、形体意识、性格化（细节在第四子问题展开）。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">产物</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">体现不是演性格，是通过“为什么做、怎么做”附带透出性格。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-12 bg-darkCarbon text-white rounded-hero-round p-8">
+            <p class="text-lg font-medium leading-relaxed">
+                人物不是想出来的，是走完这条链走出来的。
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== 第3个子问题 ===== -->
+<section id="q3" class="py-16 bg-white border-t border-lightGray">
+    <div class="container mx-auto px-4 max-w-4xl">
+
+        <div class="flex items-center gap-4 mb-6">
+            <span class="text-4xl font-bold text-lightGray leading-none">03</span>
+            <div class="flex-1 h-px bg-lightGray"></div>
+        </div>
+        <h2 class="text-[clamp(1.6rem,3vw,2.2rem)] font-bold mb-3">每个排练阶段解决什么问题？</h2>
+        <p class="text-neutralGray mb-12">初排、细排、联排彩排</p>
+
+        <div class="mb-16">
+            <div class="text-sm text-neutralGray mb-3">三个阶段</div>
+            <div class="flex flex-col md:flex-row items-stretch gap-3">
+                <div class="flex-1 bg-white border rounded-xl-card p-4">
+                    <div class="text-xs text-neutralGray mb-1">01</div>
+                    <div class="font-bold mb-1">初排</div>
+                    <div class="text-sm text-neutralGray">看理解，看方向。</div>
+                </div>
+                <div class="hidden md:flex items-center text-neutralGray"><i class="fa fa-arrow-right"></i></div>
+                <div class="flex-1 bg-white border rounded-xl-card p-4">
+                    <div class="text-xs text-neutralGray mb-1">02</div>
+                    <div class="font-bold mb-1">细排</div>
+                    <div class="text-sm text-neutralGray">形象浮现，个性展现。</div>
+                </div>
+                <div class="hidden md:flex items-center text-neutralGray"><i class="fa fa-arrow-right"></i></div>
+                <div class="flex-1 bg-white border rounded-xl-card p-4">
+                    <div class="text-xs text-neutralGray mb-1">03</div>
+                    <div class="font-bold mb-1">联排、彩排</div>
+                    <div class="text-sm text-neutralGray">演出前的定稿。</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-16">
+            <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-6">
+                <i class="fa fa-flag"></i>
+                <span>初排</span>
+            </div>
+            <h3 class="text-xl font-bold mb-6">看理解，看方向</h3>
+
+            <div class="space-y-4">
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">初排是什么</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">演员拿出自己对剧本和人物的理解，用近似剧本的即兴台词一场一场演出来。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">导演看什么</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">演员对这场戏的理解对不对；在这个理解下演出来的整体感觉对不对——看理解，看方向。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">初排对什么</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">导演构思、整场戏、剧作定向。三个对上，表演成立，才往下走。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">初排怎么排</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">一场戏分事件 → 事件下分单位 → 单位里演员有行动 → 行动串成行动线 → 行动线指向事件的核心矛盾。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">初排的效果</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">直接录只有单句，导演只能凭单句挑毛病；初排让导演看见演员整场戏的方向对不对。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-16">
+            <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-6">
+                <i class="fa fa-paint-brush"></i>
+                <span>细排</span>
+            </div>
+            <h3 class="text-xl font-bold mb-6">形象浮现，个性展现</h3>
+
+            <div class="space-y-4">
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">细排是什么</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">不是再演一遍理解，是细致加工，让人物个性化出现，基本创造出有鲜明性格特色的人物形象。如果说初排是毛坯房，细排就是硬装做完，风格已经能看出来，只差最后打磨。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">细排的作用</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">初排解决“方向成不成立”，细排解决“人物成不成立”。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">细排的目的</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">从近似即兴台词过渡到精确剧作台词；从一般性调度过渡到准确、体现剧作与导演构思的调度。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">细排与调度</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">对广播剧来说，这个“调度”是声音空间的精确化——谁在哪儿、离谁多远、对谁说话。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">细排做什么</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">语言的艺术处理、形体意识、性格化，都在细排里落地（细节在第四子问题展开）。</p>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-6">
+                <i class="fa fa-check-double"></i>
+                <span>联排、彩排</span>
+            </div>
+            <h3 class="text-xl font-bold mb-6">演出前的定稿</h3>
+
+            <div class="space-y-4">
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">联排是什么</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">把单场的戏连起来排一遍。看场与场接不接得上、节奏对不对、人物线连不连贯。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">彩排是什么</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">在联排基础上，按正式演出状态完整演一遍。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">广播剧的联、彩排</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">解决爱好者完全处于线上交流、没有真实对手、自身能力有限的问题，更好地保证演出效果；同时通过反复排练磨合，提高各方面的能力。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-12 bg-darkCarbon text-white rounded-hero-round p-8">
+            <p class="text-lg font-medium leading-relaxed">
+                初排看方向，细排做人物，联、彩排合整部戏。
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== 第4个子问题 ===== -->
+<section id="q4" class="py-16 bg-white border-t border-lightGray">
+    <div class="container mx-auto px-4 max-w-4xl">
+
+        <div class="flex items-center gap-4 mb-6">
+            <span class="text-4xl font-bold text-lightGray leading-none">04</span>
+            <div class="flex-1 h-px bg-lightGray"></div>
+        </div>
+        <h2 class="text-[clamp(1.6rem,3vw,2.2rem)] font-bold mb-3">台词和形体怎么服务于人物？</h2>
+        <p class="text-neutralGray mb-12">语言的艺术处理、形体意识、性格化</p>
+
+        <div class="mb-16">
+            <div class="text-sm text-neutralGray mb-3">三个出口</div>
+            <div class="flex flex-col md:flex-row items-stretch gap-3">
+                <div class="flex-1 bg-white border rounded-xl-card p-4">
+                    <div class="text-xs text-neutralGray mb-1">01</div>
+                    <div class="font-bold mb-1">台词</div>
+                    <div class="text-sm text-neutralGray">不是文字，是动作。</div>
+                </div>
+                <div class="hidden md:flex items-center text-neutralGray"><i class="fa fa-arrow-right"></i></div>
+                <div class="flex-1 bg-white border rounded-xl-card p-4">
+                    <div class="text-xs text-neutralGray mb-1">02</div>
+                    <div class="font-bold mb-1">形体</div>
+                    <div class="text-sm text-neutralGray">创作的另一只翅膀。</div>
+                </div>
+                <div class="hidden md:flex items-center text-neutralGray"><i class="fa fa-arrow-right"></i></div>
+                <div class="flex-1 bg-white border rounded-xl-card p-4">
+                    <div class="text-xs text-neutralGray mb-1">03</div>
+                    <div class="font-bold mb-1">性格化</div>
+                    <div class="text-sm text-neutralGray">“这一个”人发出的声音。</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-16">
+            <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-6">
+                <i class="fa fa-comment"></i>
+                <span>台词</span>
+            </div>
+            <h3 class="text-xl font-bold mb-6">不是文字，是动作</h3>
+
+            <div class="space-y-4">
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">台词是什么</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">不是文字，是人物动作在语言上的体现，是“这一个”人发出的声音，不是设计一个腔调。台词背后有心理动作、潜台词、内心独白、内心视象。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">台词的意义</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">实现自我意志、改变对手意志，是欲望的体现。平淡也是欲望——冷淡、敷衍、沉默、转移话题，都指向“我想干什么”。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">找到潜台词</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">不能只做理性分析、抠字词句段，要走进角色处境，从角色与角色的交流中找到角色背后的欲望。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-16">
+            <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-6">
+                <i class="fa fa-child"></i>
+                <span>形体</span>
+            </div>
+            <h3 class="text-xl font-bold mb-6">创作的另一只翅膀</h3>
+
+            <div class="space-y-4">
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">形体是什么</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">从标准演变成特殊。比如四方步、弓腰驼背，都是形体。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">形体的意义</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">完整地进入角色，完整地创造角色，让人物的语言更真实。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">形体与语言</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">语言和形体是创作的一对翅膀，形体塑造语言，语言引发形体。</p>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-6">
+                <i class="fa fa-star"></i>
+                <span>性格化</span>
+            </div>
+            <h3 class="text-xl font-bold mb-6">“这一个”人发出的声音</h3>
+
+            <div class="space-y-4 mb-6">
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">性格化的目的</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">创造人物性格，塑造鲜明人物形象——性格是形象的一部分。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">性格化的要求</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">要求演员“化身”——演员成为创作的媒介，让角色展现在观众眼前。但化身不是单向的，演员与角色互相塑造：“我改变了我的一切，而我又按角色的一切体现出来。”</p>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <div class="text-sm text-neutralGray mb-3">性格化的四个手段</div>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="border border-lightGray rounded-xl-card p-5">
+                        <div class="flex items-start gap-3">
+                            <div class="w-7 h-7 rounded-full bg-darkCarbon text-white flex items-center justify-center text-xs font-bold flex-shrink-0">1</div>
+                            <div>
+                                <div class="font-bold mb-1">情节塑造性格</div>
+                                <p class="text-sm text-neutralGray leading-relaxed">在事件和行动中让人物性格自然显露。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border border-lightGray rounded-xl-card p-5">
+                        <div class="flex items-start gap-3">
+                            <div class="w-7 h-7 rounded-full bg-darkCarbon text-white flex items-center justify-center text-xs font-bold flex-shrink-0">2</div>
+                            <div>
+                                <div class="font-bold mb-1">动作体现性格</div>
+                                <p class="text-sm text-neutralGray leading-relaxed">人物怎么做，比他说什么更能说明他是谁。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border border-lightGray rounded-xl-card p-5">
+                        <div class="flex items-start gap-3">
+                            <div class="w-7 h-7 rounded-full bg-darkCarbon text-white flex items-center justify-center text-xs font-bold flex-shrink-0">3</div>
+                            <div>
+                                <div class="font-bold mb-1">语言性格化</div>
+                                <p class="text-sm text-neutralGray leading-relaxed">说话的用词、语气、节奏，都带出“这一个”人的特征。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border border-lightGray rounded-xl-card p-5">
+                        <div class="flex items-start gap-3">
+                            <div class="w-7 h-7 rounded-full bg-darkCarbon text-white flex items-center justify-center text-xs font-bold flex-shrink-0">4</div>
+                            <div>
+                                <div class="font-bold mb-1">灵魂性格化</div>
+                                <p class="text-sm text-neutralGray leading-relaxed">让人物的精神世界从内里透出来。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-sm text-neutralGray leading-relaxed">
+                这四个手段都不是贴标签，而是通过“为什么做、怎么做”透出性格。
+            </p>
+        </div>
+
+        <div class="mt-12 bg-darkCarbon text-white rounded-hero-round p-8">
+            <p class="text-lg font-medium leading-relaxed">
+                台词和形体不是两套技巧，是同一个人的两个出口，是动作在不同方面的反应。性格化不是贴标签，是让“这一个”人从声音里长出来。
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== 第5个子问题 ===== -->
+<section id="q5" class="py-16 bg-white border-t border-lightGray">
+    <div class="container mx-auto px-4 max-w-4xl">
+
+        <div class="flex items-center gap-4 mb-6">
+            <span class="text-4xl font-bold text-lightGray leading-none">05</span>
+            <div class="flex-1 h-px bg-lightGray"></div>
+        </div>
+        <h2 class="text-[clamp(1.6rem,3vw,2.2rem)] font-bold mb-3">角色塑造成没成，看什么？</h2>
+        <p class="text-neutralGray mb-12">评价工具：四层、客体世界、内部的人</p>
+
+        <div class="mb-16">
+            <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-6">
+                <i class="fa fa-balance-scale"></i>
+                <span>评价工具的价值</span>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">评价术语的模糊化</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">现在评价配音，大多停在“声音好听、贴脸、有感情、像谁”这类说法上——这些只评价声音，不评价人物，标准是主观的，术语是模糊的。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">艺术讨论的主观化</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">说不清“塑造角色成不成功”，讨论就变成了口味之争——变成了“我喜不喜欢他塑造的角色”，各说各的。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">用客观的评价工具代替主观的自我感觉</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">需要一套能拆开感受的话，不是“感觉不对”，是“哪一层不对”。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-16">
+            <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-6">
+                <i class="fa fa-layer-group"></i>
+                <span>四层评价法</span>
+            </div>
+
+            <div class="space-y-4">
+                <div class="border border-lightGray rounded-xl-card p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm font-bold flex-shrink-0">1</div>
+                        <div>
+                            <div class="font-bold text-lg mb-2">语音层</div>
+                            <p class="text-sm text-neutralGray leading-relaxed">声音清晰，口齿、气息稳定；音色贴合角色；语调、重音自然。不关注好不好听，而关注会不会让听众出戏。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="border border-lightGray rounded-xl-card p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm font-bold flex-shrink-0">2</div>
+                        <div>
+                            <div class="font-bold text-lg mb-2">意义单元层</div>
+                            <p class="text-sm text-neutralGray leading-relaxed">词语、词组的意思要完整传达。这是听众听懂台词、理解人物的基础。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="border border-lightGray rounded-xl-card p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm font-bold flex-shrink-0">3</div>
+                        <div>
+                            <div class="font-bold text-lg mb-2">客体层</div>
+                            <p class="text-sm text-neutralGray leading-relaxed">他的声音有没有映现出人物所处的世界？——他是谁、和谁什么关系、在什么处境里、此刻发生了什么。判断时要注意：映现的应该是角色的客体世界，不是演员本人的客体世界。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="border border-lightGray rounded-xl-card p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm font-bold flex-shrink-0">4</div>
+                        <div>
+                            <div class="font-bold text-lg mb-2">图式化层</div>
+                            <p class="text-sm text-neutralGray leading-relaxed">表演是否具有艺术引导力？有没有给听众留出想象和参与的空间？能不能帮助听众感受、理解人物？</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-6">
+                <i class="fa fa-palette"></i>
+                <span>风格与塑造</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">客体世界的区分</h3>
+            <p class="text-sm text-neutralGray mb-6">评价的核心，是分清两种客体世界。</p>
+
+            <div class="space-y-4">
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">两种客体世界</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">一个是演员本人的客体世界，一个是角色的客体世界。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">容易出现的状况</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">演员的客体世界代替了角色的客体世界——听众听什么都是这个演员，不是人物。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">塑造成立</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">演员的客体世界服务于角色的客体世界，演员的底色化在角色里，听众听到的是人物。这就是塑造。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">提醒</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">风格本身不是问题。问题是风格和塑造谁盖住谁——风格盖住人物，就是没塑造；风格融进人物、服务于人物，才是好塑造。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-12 bg-darkCarbon text-white rounded-hero-round p-8">
+            <p class="text-base md:text-lg font-medium leading-relaxed">
+                评价配音，不问“像不像、好不好听”，问：他映现的是角色的客体世界，还是演员本人的客体世界？听众听到的是人物，还是这个演员本人？表演有没有引导听众感受、理解人物？心里有了这杆秤，别人的夸和骂，你才接得住。
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== 第一部分结束 ===== -->
+<section class="py-16 bg-lightGray/40">
+    <div class="container mx-auto px-4 max-w-4xl text-center">
+        <div class="text-sm text-neutralGray mb-3">译声资料库 · 表演基础</div>
+        <p class="text-neutralGray mb-6">“怎么去塑造一个人物”五个子问题到此结束。默会知识在实践里，欢迎进群一起做一遍。</p>
+        <a href="index.html" class="inline-flex items-center gap-2 bg-darkCarbon text-white rounded-full px-6 py-3 text-sm font-medium">
+            返回首页 <i class="fa fa-arrow-right"></i>
+        </a>
+    </div>
+</section>
+
+<!-- ===== 来源声明 (新加的部分) ===== -->
+<section class="py-16 bg-lightGray/40 border-t border-lightGray">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-6 bg-white shadow-sm">
+            <i class="fa fa-book text-darkCarbon"></i>
+            <span class="text-darkCarbon font-medium">网站资料库来源与致谢</span>
+        </div>
+
+        <div class="space-y-6 text-sm text-neutralGray leading-relaxed">
+            
+            <!-- 书籍声明部分 -->
+            <div class="bg-white p-6 rounded-xl-card border border-lightGray">
+                <div class="font-bold text-darkCarbon text-base mb-3 flex items-center gap-2">
+                    <i class="fa fa-graduation-cap"></i> 核心理论参考书籍：
+                </div>
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-3">
+                        <i class="fa fa-check-circle text-darkCarbon/40 mt-0.5"></i>
+                        <div>
+                            <strong class="text-darkCarbon">《表演艺术概论》</strong>
+                            <p class="mt-1 text-xs text-neutralGray">为本站“表演基础”板块及人物塑造体系，提供了核心的表演理论框架支撑。</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa fa-check-circle text-darkCarbon/40 mt-0.5"></i>
+                        <div>
+                            <strong class="text-darkCarbon">《中国译制电影史》</strong>
+                            <p class="mt-1 text-xs text-neutralGray">为本站梳理国内配音行业发展脉络、建立历史视野，提供了极其珍贵的参考依据。</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa fa-check-circle text-darkCarbon/40 mt-0.5"></i>
+                        <div>
+                            <strong class="text-darkCarbon">《演员艺术语言基本技巧》</strong>
+                            <p class="mt-1 text-xs text-neutralGray">为本站“台词基础”中的基本功训练与理论概念，提供了专业维度的参考。</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 致谢部分 -->
+            <div class="bg-white p-6 rounded-xl-card border border-lightGray">
+                <div class="font-bold text-darkCarbon text-base mb-2 flex items-center gap-2">
+                    <i class="fa fa-microphone"></i> 特别致谢：
+                </div>
+                <p class="text-xs">著名配音演员、台词指导 <strong class="text-darkCarbon">王明军老师</strong> 分享的“塑造人物五步法”，为高阶实操部分提供了宝贵的从业经验指导。</p>
+            </div>
+
+            <!-- 版权免责说明 -->
+            <p class="pt-4 border-t border-lightGray text-xs text-neutralGray/80">
+                注：本网站所有文字内容均基于以上书籍及前辈经验，进行深度提炼与个人化解读，非直接复制原文。本站资料库内容不作商用，仅供配音爱好者在学习与实践中参考。如涉及版权疑问，请联系我们。
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<footer class="bg-darkCarbon text-white">
+    <div class="container mx-auto px-4 max-w-4xl py-10 flex flex-wrap justify-between items-center gap-4">
+        
+        <div class="text-xs text-white/40 mt-4 md:mt-0 flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+            <span>© 2026 译声 保留全部权利</span>
+            <span class="hidden md:inline">|</span>
+            <span>部分图片素材来源于免费图库 Unsplash 与 Pexels</span>
+        </div>
+
+        <div class="flex gap-4 text-white/60">
+            <i class="fa fa-weibo text-lg"></i>
+            <i class="fa fa-wechat text-lg"></i>
+            <i class="fa fa-github text-lg"></i>
+        </div>
+    </div>
+</footer>
+
+<script>
+// ===== 平滑滚动与哈希定位（修复了被导航栏挡住的问题） =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const targetDom = document.querySelector(targetId);
+        if(targetDom){
+            window.scrollTo({ 
+                top: targetDom.offsetTop - 120, // 偏移量改为 120，避开悬浮导航栏
+                behavior: 'smooth' 
+            });
+        }
+    })
+})
+
+// 解决刷新时带 hash 自动定位被挡住的问题
+window.addEventListener('load', function() {
+    if (window.location.hash) {
+        const targetDom = document.querySelector(window.location.hash);
+        if (targetDom) {
+            setTimeout(() => {
+                window.scrollTo({
+                    top: targetDom.offsetTop - 120, 
+                    behavior: 'auto'
+                });
+            }, 10);
+        }
+    }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>译声资料库 | 怎么让人物说话？</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkCarbon: '#121212',
+                        neutralGray: '#777777',
+                        lightGray: '#E5E5E5',
+                    },
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                    borderRadius: { 'xl-card': '16px', 'hero-round': '24px' }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow { text-shadow: 0 2px 12px rgba(0,0,0,0.45); }
+            .scrollbar-hide::-webkit-scrollbar { display: none; }
+        }
+    </style>
+</head>
+<body class="bg-white font-sans text-darkCarbon overflow-x-hidden">
+
+<!-- ===== 顶部导航栏 ===== -->
+<header class="fixed top-0 left-0 w-full z-50 pointer-events-none">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between gap-4">
+        <div class="pointer-events-auto bg-darkCarbon/50 backdrop-blur-2xl backdrop-saturate-150 rounded-full px-6 py-3 shadow-2xl border border-white/20 transition-all duration-300 flex items-center">
+           <a href="index.html" class="hover:opacity-80 transition flex items-center">
+                <img src="assets/images/logo/logo_yisheng.png" alt="译声" class="h-7 w-auto object-contain">
+            </a>
+        </div>
+        <nav class="pointer-events-auto hidden md:flex items-center gap-x-4 bg-darkCarbon/50 backdrop-blur-2xl backdrop-saturate-150 rounded-full px-4 py-2 shadow-2xl border border-white/20 transition-all duration-300">
+            <a href="index.html" class="px-5 py-2 rounded-full text-white/70 hover:bg-white/20 hover:text-white transition text-sm">首页</a>
+            <a href="index.html#knowledge" class="px-5 py-2 rounded-full bg-white/30 text-white font-medium text-sm">译声资料库</a>
+            <a href="index.html#drama" class="px-5 py-2 rounded-full text-white/70 hover:bg-white/20 hover:text-white transition text-sm">剧目化训练</a>
+            <a href="index.html#process" class="px-5 py-2 rounded-full text-white/70 hover:bg-white/20 hover:text-white transition text-sm">作品与访谈</a>
+        </nav>
+        <div class="pointer-events-auto bg-darkCarbon/50 backdrop-blur-2xl backdrop-saturate-150 rounded-full shadow-2xl border border-white/20 transition-all duration-300">
+            <a href="index.html" class="block px-6 py-3 text-white text-sm font-medium flex items-center gap-2">
+                返回首页 <i class="fa fa-arrow-left"></i>
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- ===== 页面头部 ===== -->
+<section class="bg-darkCarbon text-white pt-32 pb-16">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <div class="flex flex-wrap items-center gap-2 mb-6">
+            <a href="library-acting.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white/70 hover:text-white hover:bg-white/20 transition text-sm">
+                <i class="fa fa-book"></i> 表演基础
+            </a>
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-darkCarbon text-sm font-medium">
+                <i class="fa fa-comment"></i> 台词基础
+            </span>
+        </div>
+        <h1 class="text-[clamp(2rem,4vw,3rem)] font-bold leading-tight text-shadow mb-6">
+            怎么让人物说话？
+        </h1>
+        <p class="text-sm text-white/50 leading-relaxed max-w-2xl">
+            编者按：台词不是把字念出来，是让人物借你的嘴说话。这一部分先讲观念与框架，再给基础工具和高阶参考。读到某处卡住了，不用硬扛，进群问问，或者找人一起做一遍。
+        </p>
+    </div>
+</section>
+
+<!-- ===== 核心认知 ===== -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-6">
+            <i class="fa fa-lightbulb"></i>
+            <span>核心认知</span>
+        </div>
+
+        <div class="space-y-5 mb-4">
+            <div class="bg-lightGray/30 rounded-xl-card p-6 border border-lightGray">
+                <div class="font-bold text-lg mb-2">台词 ≠ 意思</div>
+                <p class="text-sm text-darkCarbon/80 leading-relaxed">人物说出来的字面台词，往往不等于他真正的目的与潜台词。支撑音色、技巧等外在表现的，是演员对人物的深度理解与自我融合。</p>
+            </div>
+            <div class="bg-lightGray/30 rounded-xl-card p-6 border border-lightGray">
+                <div class="font-bold text-lg mb-2">循序渐进</div>
+                <p class="text-sm text-darkCarbon/80 leading-relaxed">不存在一开口就是角色的魔法。它是经过多部作品磨练、建立语感、逐步完善的过程。</p>
+            </div>
+            <div class="bg-lightGray/30 rounded-xl-card p-6 border border-lightGray">
+                <div class="font-bold text-lg mb-2">融为一体</div>
+                <p class="text-sm text-darkCarbon/80 leading-relaxed">不是演员在幕后“操纵”人物说话（两层皮），而是演员成为了他，用他的逻辑去表达。</p>
+            </div>
+        </div>
+
+        <div class="border-l-4 border-darkCarbon pl-5">
+            <p class="text-[clamp(1.05rem,2vw,1.3rem)] font-bold leading-relaxed">
+                先有对人物的理解，才有对的声音。
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 01 什么是人物语言？ ===== -->
+<section class="py-16 bg-white border-t border-lightGray">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <div class="flex items-center gap-4 mb-6">
+            <span class="text-4xl font-bold text-lightGray leading-none">01</span>
+            <div class="flex-1 h-px bg-lightGray"></div>
+        </div>
+        <h2 class="text-[clamp(1.6rem,3vw,2.2rem)] font-bold mb-3">什么是人物语言？</h2>
+        <p class="text-neutralGray mb-12">人物语言属于人物，不是演员的日常说话。</p>
+
+        <div class="space-y-4">
+            <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                <div class="font-bold mb-2">概念</div>
+                <p class="text-sm text-darkCarbon/80 leading-relaxed">人物语言属于人物。它是演员经过加工处理，塑造出来的专属于某部戏、某个人物的语言，反映人物的思想、情感和性格。</p>
+            </div>
+            <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                <div class="font-bold mb-2">要求</div>
+                <p class="text-sm text-darkCarbon/80 leading-relaxed">符合人物。要求演员在理解的基础上，在排练中进行磨合调整。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 02 人物语言的标准 ===== -->
+<section class="py-16 bg-white border-t border-lightGray">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <div class="flex items-center gap-4 mb-6">
+            <span class="text-4xl font-bold text-lightGray leading-none">02</span>
+            <div class="flex-1 h-px bg-lightGray"></div>
+        </div>
+        <h2 class="text-[clamp(1.6rem,3vw,2.2rem)] font-bold mb-3">人物语言的标准</h2>
+        <p class="text-neutralGray mb-12">真实、个性化、灵活，三者共同构成人物语言的基本要求。</p>
+
+        <div class="space-y-4">
+            <div class="border border-lightGray rounded-xl-card p-6">
+                <div class="flex items-start gap-4">
+                    <div class="w-8 h-8 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm font-bold flex-shrink-0">1</div>
+                    <div>
+                        <div class="font-bold text-lg mb-2">真实</div>
+                        <p class="text-sm text-neutralGray leading-relaxed">像活人一样，具有真实的生命感。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border border-lightGray rounded-xl-card p-6">
+                <div class="flex items-start gap-4">
+                    <div class="w-8 h-8 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm font-bold flex-shrink-0">2</div>
+                    <div>
+                        <div class="font-bold text-lg mb-2">个性化（唯一性）</div>
+                        <p class="text-sm text-neutralGray leading-relaxed">这是“这一个”人物的专属语言。受生理条件限制，演员在不同角色间的音色变化可能有限，但语言的处理方式、节奏、语气等必须产生明显变化，让观众能清晰区分出不同角色。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border border-lightGray rounded-xl-card p-6">
+                <div class="flex items-start gap-4">
+                    <div class="w-8 h-8 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm font-bold flex-shrink-0">3</div>
+                    <div>
+                        <div class="font-bold text-lg mb-2">灵活性（活）</div>
+                        <p class="text-sm text-neutralGray leading-relaxed">根据不同媒介形态（如广播剧、影视剧、动画电影等），人物语言的呈现方式需具备相应的适应性与变化。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="text-xs text-neutralGray leading-relaxed mt-5">
+            注：普通话标准是底线共识，不作为艺术评判的标准。
+        </p>
+    </div>
+</section>
+
+<!-- ===== 03 人物怎么说话？ ===== -->
+<section class="py-16 bg-white border-t border-lightGray">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <div class="flex items-center gap-4 mb-6">
+            <span class="text-4xl font-bold text-lightGray leading-none">03</span>
+            <div class="flex-1 h-px bg-lightGray"></div>
+        </div>
+        <h2 class="text-[clamp(1.6rem,3vw,2.2rem)] font-bold mb-3">人物怎么说话？</h2>
+        <p class="text-neutralGray mb-12">实操设计：从内因到情境，再到大局。</p>
+
+        <!-- 三步总览 -->
+        <div class="mb-16">
+            <div class="text-sm text-neutralGray mb-3">三步设计</div>
+            <div class="flex flex-col md:flex-row items-stretch gap-3">
+                <div class="flex-1 bg-white border rounded-xl-card p-4">
+                    <div class="text-xs text-neutralGray mb-1">第一步</div>
+                    <div class="font-bold mb-1">找内因</div>
+                    <div class="text-sm text-neutralGray">生理、习惯、地域。</div>
+                </div>
+                <div class="hidden md:flex items-center text-neutralGray"><i class="fa fa-arrow-right"></i></div>
+                <div class="flex-1 bg-white border rounded-xl-card p-4">
+                    <div class="text-xs text-neutralGray mb-1">第二步</div>
+                    <div class="font-bold mb-1">找情境</div>
+                    <div class="text-sm text-neutralGray">对象与场域。</div>
+                </div>
+                <div class="hidden md:flex items-center text-neutralGray"><i class="fa fa-arrow-right"></i></div>
+                <div class="flex-1 bg-white border rounded-xl-card p-4">
+                    <div class="text-xs text-neutralGray mb-1">第三步</div>
+                    <div class="font-bold mb-1">找大局</div>
+                    <div class="text-sm text-neutralGray">主题与剧组步调。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第一步 -->
+        <div class="mb-16">
+            <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-6">
+                <i class="fa fa-search"></i>
+                <span>第一步：找内因</span>
+            </div>
+            <h3 class="text-xl font-bold mb-6">从人物的生理条件、说话习惯、地域背景入手</h3>
+            <div class="bg-lightGray/30 rounded-xl-card p-6 border border-lightGray">
+                <p class="text-sm text-darkCarbon/80 leading-relaxed">比如他嗓子是否受过伤？语速是快是慢？有没有特定口头禅？</p>
+            </div>
+        </div>
+
+        <!-- 第二步 -->
+        <div class="mb-16">
+            <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-6">
+                <i class="fa fa-users"></i>
+                <span>第二步：找情境（对象与场域）</span>
+            </div>
+            <h3 class="text-xl font-bold mb-6">同一个人，在不同场域、面对不同对象，状态截然不同</h3>
+            <div class="space-y-4">
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">找基调</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">在分析人物基础上确定基调。可借助具象化想象（长什么样、穿什么）或“借感觉”（找气质相近的演员借整体感觉）。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">看对象与场域</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">同一个人，在特定场域面对特定对象，状态截然不同。（如：在外唯唯诺诺，在家极其强势。）</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第三步 -->
+        <div>
+            <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-6">
+                <i class="fa fa-compass"></i>
+                <span>第三步：找大局（进阶要求）</span>
+            </div>
+            <h3 class="text-xl font-bold mb-6">让台词成为整部作品中的一块拼图</h3>
+            <div class="space-y-4">
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">分析主题意蕴</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">了解整个戏剧的主题和导演的构思（最高任务）。</p>
+                </div>
+                <div class="bg-lightGray/30 rounded-xl-card p-5 border border-lightGray">
+                    <div class="font-bold mb-2">剧组步调一致</div>
+                    <p class="text-sm text-darkCarbon/80 leading-relaxed">你的语言基调必须符合整部戏的方向，让台词成为整部作品中的一块拼图。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 高阶实操参考：五步法 ===== -->
+<section class="py-16 bg-white border-t border-lightGray">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <div class="flex items-center gap-4 mb-6">
+            <span class="text-4xl font-bold text-lightGray leading-none">04</span>
+            <div class="flex-1 h-px bg-lightGray"></div>
+        </div>
+        <h2 class="text-[clamp(1.6rem,3vw,2.2rem)] font-bold mb-3">高阶实操参考：塑造人物五步法</h2>
+        <p class="text-neutralGray mb-4">从宏观框架到具体设计，把“怎么说话”落到可操作的五步。</p>
+        <p class="text-xs text-neutralGray mb-12">注：以下五步法引用自著名配音演员、台词指导王明军老师的从业经验分享。</p>
+
+        <div class="space-y-4">
+            <div class="border border-lightGray rounded-xl-card p-6">
+                <div class="flex items-start gap-4">
+                    <div class="w-8 h-8 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm font-bold flex-shrink-0">1</div>
+                    <div>
+                        <div class="font-bold text-lg mb-2">立住人物</div>
+                        <p class="text-sm text-neutralGray leading-relaxed">明确“我是谁”，确立人物的核心性格与最高任务。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border border-lightGray rounded-xl-card p-6">
+                <div class="flex items-start gap-4">
+                    <div class="w-8 h-8 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm font-bold flex-shrink-0">2</div>
+                    <div>
+                        <div class="font-bold text-lg mb-2">性格化（落实眼神）</div>
+                        <p class="text-sm text-neutralGray leading-relaxed">用声音的焦点与指向性体现人物态度（躲闪、凝视、居高临下等）。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border border-lightGray rounded-xl-card p-6">
+                <div class="flex items-start gap-4">
+                    <div class="w-8 h-8 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm font-bold flex-shrink-0">3</div>
+                    <div>
+                        <div class="font-bold text-lg mb-2">人物关系</div>
+                        <p class="text-sm text-neutralGray leading-relaxed">面对不同对象，语气的态度与节奏截然不同。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border border-lightGray rounded-xl-card p-6">
+                <div class="flex items-start gap-4">
+                    <div class="w-8 h-8 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm font-bold flex-shrink-0">4</div>
+                    <div>
+                        <div class="font-bold text-lg mb-2">空间场景</div>
+                        <p class="text-sm text-neutralGray leading-relaxed">根据环境（空旷、狭小等）调整声音的空间距离与音量。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border border-lightGray rounded-xl-card p-6">
+                <div class="flex items-start gap-4">
+                    <div class="w-8 h-8 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm font-bold flex-shrink-0">5</div>
+                    <div>
+                        <div class="font-bold text-lg mb-2">刺激反应</div>
+                        <p class="text-sm text-neutralGray leading-relaxed">台词是接收对手刺激后的真实反应，而非机械背诵。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-10 bg-darkCarbon text-white rounded-hero-round p-8">
+            <p class="text-base md:text-lg font-medium leading-relaxed">
+                以上是设计人物语言的宏观框架。至于每一句台词微观的重音和停顿，没有标准答案，请带着这些思考，去真实的排练场里，和你的对手一起找到它。
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 外部辅助：基础与热身工具包 ===== -->
+<section class="py-16 bg-white border-t border-lightGray">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <div class="flex items-center gap-4 mb-6">
+            <span class="text-4xl font-bold text-lightGray leading-none">05</span>
+            <div class="flex-1 h-px bg-lightGray"></div>
+        </div>
+        <h2 class="text-[clamp(1.6rem,3vw,2.2rem)] font-bold mb-3">外部辅助：基础与热身工具包</h2>
+        <p class="text-neutralGray mb-4">基本功是工具，不是终点。工具包在这里，用不用、用多少，按自己的阶段来。</p>
+        <p class="text-xs text-neutralGray mb-10">注：本资料库默认你具备正常的沟通能力。关于最基础的普通话正音、吐字发声等播音基础，直接推荐专业老师课程。</p>
+
+        <div class="grid md:grid-cols-2 gap-5">
+            <div class="bg-lightGray/30 rounded-xl-card p-6 border border-lightGray">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-9 h-9 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm flex-shrink-0">
+                        <i class="fa fa-microphone"></i>
+                    </div>
+                    <div class="font-bold">普通话正音</div>
+                </div>
+                <p class="text-sm text-darkCarbon/80 leading-relaxed mb-3">王明军老师普通话 / 播音发声基础课程。</p>
+                <a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-neutralGray hover:text-darkCarbon transition">
+                    前往 B 站 <i class="fa fa-external-link"></i>
+                </a>
+            </div>
+            <div class="bg-lightGray/30 rounded-xl-card p-6 border border-lightGray">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-9 h-9 rounded-full bg-darkCarbon text-white flex items-center justify-center text-sm flex-shrink-0">
+                        <i class="fa fa-fire"></i>
+                    </div>
+                    <div class="font-bold">日常开嗓</div>
+                </div>
+                <p class="text-sm text-darkCarbon/80 leading-relaxed mb-3">口部操与开嗓练习示范，包含唇舌激活、气泡音放松等。建议在准备录音或接戏期间，保持声带清醒状态。</p>
+                <a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-neutralGray hover:text-darkCarbon transition">
+                    观看示范 <i class="fa fa-external-link"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 来源声明 (新版卡片) ===== -->
+<section class="py-16 bg-lightGray/40 border-t border-lightGray">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <div class="inline-flex items-center gap-2 border rounded-full px-3 py-1 text-sm mb-6 bg-white shadow-sm">
+            <i class="fa fa-book text-darkCarbon"></i>
+            <span class="text-darkCarbon font-medium">网站资料库来源与致谢</span>
+        </div>
+
+        <div class="space-y-6 text-sm text-neutralGray leading-relaxed">
+            
+            <!-- 书籍声明部分 -->
+            <div class="bg-white p-6 rounded-xl-card border border-lightGray">
+                <div class="font-bold text-darkCarbon text-base mb-3 flex items-center gap-2">
+                    <i class="fa fa-graduation-cap"></i> 核心理论参考书籍：
+                </div>
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-3">
+                        <i class="fa fa-check-circle text-darkCarbon/40 mt-0.5"></i>
+                        <div>
+                            <strong class="text-darkCarbon">《表演艺术概论》</strong>
+                            <p class="mt-1 text-xs text-neutralGray">为本站“表演基础”板块及人物塑造体系，提供了核心的表演理论框架支撑。</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa fa-check-circle text-darkCarbon/40 mt-0.5"></i>
+                        <div>
+                            <strong class="text-darkCarbon">《中国译制电影史》</strong>
+                            <p class="mt-1 text-xs text-neutralGray">为本站梳理国内配音行业发展脉络、建立历史视野，提供了极其珍贵的参考依据。</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa fa-check-circle text-darkCarbon/40 mt-0.5"></i>
+                        <div>
+                            <strong class="text-darkCarbon">《演员艺术语言基本技巧》</strong>
+                            <p class="mt-1 text-xs text-neutralGray">为本站“台词基础”中的基本功训练与理论概念，提供了专业维度的参考。</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 致谢部分 -->
+            <div class="bg-white p-6 rounded-xl-card border border-lightGray">
+                <div class="font-bold text-darkCarbon text-base mb-2 flex items-center gap-2">
+                    <i class="fa fa-microphone"></i> 特别致谢：
+                </div>
+                <p class="text-xs">著名配音演员、台词指导 <strong class="text-darkCarbon">王明军老师</strong> 分享的“塑造人物五步法”，为高阶实操部分提供了宝贵的从业经验指导。</p>
+            </div>
+
+            <!-- 版权免责说明 -->
+            <p class="pt-4 border-t border-lightGray text-xs text-neutralGray/80">
+                注：本网站所有文字内容均基于以上书籍及前辈经验，进行深度提炼与个人化解读，非直接复制原文。本站资料库内容不作商用，仅供配音爱好者在学习与实践中参考。如涉及版权疑问，请联系我们。
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 页尾 ===== -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4 max-w-4xl text-center">
+        <p class="text-neutralGray mb-6">“怎么让人物说话？”观念与框架到此结束。剩下的，在排练场里。</p>
+        <a href="index.html" class="inline-flex items-center gap-2 bg-darkCarbon text-white rounded-full px-6 py-3 text-sm font-medium">
+            返回首页 <i class="fa fa-arrow-right"></i>
+        </a>
+    </div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<footer class="bg-darkCarbon text-white">
+    <div class="container mx-auto px-4 max-w-4xl py-10 flex flex-wrap justify-between items-center gap-4">
+        
+        <div class="text-xs text-white/40 mt-4 md:mt-0 flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+            <span>© 2026 译声 保留全部权利</span>
+            <span class="hidden md:inline">|</span>
+            <span>部分图片素材来源于免费图库 Unsplash 与 Pexels</span>
+        </div>
+
+        <div class="flex gap-4 text-white/60">
+            <i class="fa fa-weibo text-lg"></i>
+            <i class="fa fa-wechat text-lg"></i>
+            <i class="fa fa-github text-lg"></i>
+        </div>
+    </div>
+</footer>
+
+<script>
+// ===== 平滑滚动与哈希定位（修复了被导航栏挡住的问题） =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const targetDom = document.querySelector(targetId);
+        if(targetDom){
+            window.scrollTo({ 
+                top: targetDom.offsetTop - 120, 
+                behavior: 'smooth' 
+            });
+        }
+    })
+})
+
+// 解决刷新时带 hash 自动定位被挡住的问题
+window.addEventListener('load', function() {
+    if (window.location.hash) {
+        const targetDom = document.querySelector(window.location.hash);
+        if (targetDom) {
+            setTimeout(() => {
+                window.scrollTo({
+                    top: targetDom.offsetTop - 120, 
+                    behavior: 'auto'
+                });
+            }, 10);
+        }
+    }
+});
+</script>
+</body>
+</html>
